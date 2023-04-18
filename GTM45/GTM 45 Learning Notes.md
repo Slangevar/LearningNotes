@@ -588,6 +588,8 @@ By exercise 8, we know that if $\mu$ is finite, $\varphi$ being $\mu$-continuous
 
  $\square$
 
+------
+
 ### Exercise 19
 
 If finite $\varphi_n \rightarrow \varphi$ finite, then $\varphi$ is $\sigma$-additive. (If $\left|\varphi_n\right| \le c_n$, set $\mu A=\sum \frac{1}{2^n c_n}\left|\varphi_n A\right|$ and apply 18.)
@@ -598,7 +600,7 @@ If $\left|\varphi_n\right| \le c_n$, set $\mu A=\sum \frac{1}{2^n c_n}\left|\var
 
 ## Chapter 2 Exercise
 
-**Notation.** Unless otherwise stated, the measure space $(\Omega,\mathfrak a, \mu)$ is fixed, the (measurable) sets $A, B, ...,$ with or without affixes, belong to $\mathfrak a$ and the functions $X, Y, \dots$ with or without affixes, are finite measurable functions.
+**Notation.** Unless otherwise stated, the measure space $(\Omega,\mathfrak a, \mu)$ is fixed, the (measurable) sets $A, B, ...,$ with or without affixes, belong to $\mathfrak a$, and the functions $X, Y, \dots$ with or without affixes, are finite measurable functions.
 
 ### Exercise 1
 
@@ -607,14 +609,67 @@ $$
 (C=\left[\operatorname*{lim}\,\operatorname{inf}X_{n}=\operatorname*{lim}\,\operatorname*{sup}\,X_{n}\right].)
 $$
 
+**Solution**
+
+To be specific, we could write 
+$$
+C = \left[\omega\in \Omega: \lim\inf X_n(\omega) = \lim\sup X_n(\omega)\right]
+$$
+Consider the function $Y_1 = \lim \inf X_n$ and $Y_2 = \lim\sup X_n$, then according to the *MEASURABILITY THEOREM*, they are measurable. If we define $Y = Y_1 - Y_2$, then it is the result of an arithmetic operation of $Y_1$ and $Y_2$ so that it is also measurable. Notice that 
+$$
+C = Y^{-1}(0).
+$$
+Since it is a inverse image of a Borel set $\{0\}$ in $\mathbb R$, $C$ is a measurable set. $\square$
+
+------
+
+A countably valued function $X=\sum x_j I_{A_j}$ where the sets $A_j$ are measurable is called an elementary measurable function or, simply, an *elementary function*; if the number of distinct values of $X$ is finite, then $X$ is also called a *simple function*.
+
 ### Exercise 2
 
-If $\mu$ is finite, then given X, for every $\epsilon > 0$ there exists $A$ such that $\mu A<\epsilon$ and $X$ is bounded on $A^{c}.$ If $X$ is bounded, then there exists a sequence of simple functions which coniverges uniformly to $X.$ Combine both propositions.
+If $\mu$ is finite, then given $X$, for every $\epsilon > 0$ there exists $A$ such that $\mu A<\epsilon$ and $X$ is bounded on $A^{c}.$ If $X$ is bounded, then there exists a sequence of simple functions which converges uniformly to $X.$ Combine both propositions.
 
 We say that a sequence $X_n$ converges almost uniformly (a.u.) to $X$, and write $X_n \stackrel{\text { a.u. }}{\longrightarrow} X$, if, for every $\epsilon>0$, there exists a set $A$ with $\mu A<\epsilon$ such that $X_n \stackrel{\mathrm{u}}{\longrightarrow} X$ on $A^c$.
 
+**Solution**
+
+For the first statement, since $\mu$ is finite, we have that $\mu(\emptyset) = 0$. If the statement is not true, then there exists $\epsilon_0 > 0$ such that there does not exist a set $A$ satisfying $\mu A < \epsilon_0$ and $X$ is bounded on $A^c$. (Notice that finite does not mean bounded, consider $f(x) = x$. ) 
+
+There are two possible situations, the first is that $\forall B \ne \emptyset, B \in \mathfrak a$, $\mu B \ge \epsilon_0$ or $\mu B = 0$. Since $\mu$ is finite, we can write $\mu \Omega = M < \infty$.  This means that the number of disjoint sets such that its measure is greater than $\epsilon_0$ is at most $\frac{M}{\epsilon_0}$, which is a finite number. For any one these set, say $C$, it is possible to claim that for each single element subset  $\{\omega\} \subset C$ is either $\mu$-null or with $\mu$-value no less than $\epsilon_0$. This further leads to the fact that there are at most $\frac{M}{\epsilon_0}$ single element set with $\mu$-value no less than $\epsilon_0$subsets. It is possible to find the maximum of $|X|$, say $x_0$, over these single elements and so on a set with $\mu$-value $M$, we have $|X| < x_0$, which means the statement is actually true. 
+
+The second possible situation is the one that does not belong to the first. If the first statement is not true, then for any $x_0 > 0$, there exists $\epsilon_0$ such that $\mu(A_0 = \{\omega: |X(\omega)| \le x_0\}) <= M - \epsilon_0$. But this means that over a non-empty set $A_0$, for any $x_0 > 0$, $|X| > x_0$ which means $|X| = \infty$ and it is contradictory. Therefore, the first statement has to be true.
+
+For the second statement, this is proposition C'' of measurability theorem. Since $X$ is bounded, we can assume that $|X| < x_0$. On the other hand, since $X$ is a measurable function, the set $\{\omega:  \frac{k-1}{2^n} \le X(\omega) < \frac{k}{2^n}\}$ is measurable for any $n\in \mathbb N$ and $k \in \mathbb Z$(, and so the indicator function is measurable as well).  As a result, we can consider a sequence of simple function $\{X_n\}$ such that 
+$$
+X_n = \sum_{k = \lceil -x_02^n\rceil }^{\lceil x_0 2^n \rceil } \frac{k-1}{2^n} \mathbb I_{\{\frac{k-1}{2^n} \le X < \frac{k}{2^n}\}}.
+$$
+It is true that $|X_n - X| < \frac{1}{2^n}$ everywhere, which means that $X_n \xrightarrow{u} X$. 
+
+Finally we could see that it is very natural to define almost-uniform convergence. $\square$
+
+------
+
+### Exercise 3
+
+If $X_n \stackrel{\text { a.u. }}{\longrightarrow} X$, then $X_n \stackrel{\text { a.e. }}{\longrightarrow} X$ and $X_n \stackrel{\mu}{\longrightarrow} X$. (For the first assertion, form $A_n$ where $A_n$ is the $A$ of the foregoing definition with $\epsilon=\frac{1}{n}$.)
+
+**Solution**
+
+For the first assertion, we consider a sequence of set $\{A_n\}$ where $\mu(A_n) < \frac{1}{n}$ and on $A_n^c$ we have $X_n\xrightarrow{u} X$ and so $X_n \to X$. As a result, if we define $A = \cap_{n=1}^\infty A_n$, then on $A^c$ we have  $X_n\to X$ . However, if we consider the measure of $A$ we will see that 
+$$
+\mu A = \mu\left( \bigcap_{n=1}^\infty A_n \right) \le \inf \mu(A_n) = 0.
+$$
+This means that $X_n \xrightarrow{\text{a.e.}} X$. Since $\mu$ is finite, $X$ is finite, we have that a.e. convergence implies convergence in measure. Hence, $X_n \xrightarrow{\mu} X$. (*COMPARISON OF CONVERGENCES THEOREM*, page 117). $\square$
+
+------
 
 
-3. If $X_n \stackrel{\text { a.u. }}{\longrightarrow} X$, then $X_n \stackrel{\text { a.e. }}{\longrightarrow} X$ and $X_n \stackrel{\mu}{\longrightarrow} X$. (For the first assertion, form $A_n$ where $A_n$ is the $A$ of the foregoing definition with $\epsilon=\frac{1}{n}$.)
-4. If $X_n \stackrel{\mu}{\longrightarrow} X$, then there exists a subsequence $X_{n^{\prime}} \stackrel{\text { a.u. }}{\longrightarrow} X$.
-5. Egoroff's theorem. If $\mu$ is finite, then $X_n \stackrel{\text { a.e. }}{\longrightarrow} X$, implies that $X_n \stackrel{\text { a.u. }}{\longrightarrow} X$. Compare with 3. (Neglect the null set of divergence, and form $A=\bigcup_{m=1}^{\infty} A_m$ with $A_m=\bigcup_{k \geqq n(m)}\left[\left|X_k-X\right| \geqq \frac{1}{m}\right]$ and $n(m)$ such that $\mu A_m<\frac{\epsilon}{2^m}$.)
+
+
+
+
+
+
+
+3. If $X_n \stackrel{\mu}{\longrightarrow} X$, then there exists a subsequence $X_{n^{\prime}} \stackrel{\text { a.u. }}{\longrightarrow} X$.
+4. Egoroff's theorem. If $\mu$ is finite, then $X_n \stackrel{\text { a.e. }}{\longrightarrow} X$, implies that $X_n \stackrel{\text { a.u. }}{\longrightarrow} X$. Compare with 3. (Neglect the null set of divergence, and form $A=\bigcup_{m=1}^{\infty} A_m$ with $A_m=\bigcup_{k \geqq n(m)}\left[\left|X_k-X\right| \geqq \frac{1}{m}\right]$ and $n(m)$ such that $\mu A_m<\frac{\epsilon}{2^m}$.)
