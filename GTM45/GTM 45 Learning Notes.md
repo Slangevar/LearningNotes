@@ -659,17 +659,104 @@ For the first assertion, we consider a sequence of set $\{A_n\}$ where $\mu(A_n)
 $$
 \mu A = \mu\left( \bigcap_{n=1}^\infty A_n \right) \le \inf \mu(A_n) = 0.
 $$
-This means that $X_n \xrightarrow{\text{a.e.}} X$. Since $\mu$ is finite, $X$ is finite, we have that a.e. convergence implies convergence in measure. Hence, $X_n \xrightarrow{\mu} X$. (*COMPARISON OF CONVERGENCES THEOREM*, page 117). $\square$
+This means that $X_n \xrightarrow{\text{a.e.}} X$.
+
+We don't have $\mu$ being finite, so we cannot use the Comparison of Convergence Theorem. We may need to proof for convergence in measure directly. Notice that for any $\delta > 0$,  $\epsilon > 0$, there exists $A$ with $\mu(A) < \epsilon$ and $X_n \xrightarrow{u} X$ on $A^c$. This means that $\exist N_\delta$ such that when $n > N_{\delta}$,  
+$$
+\mu\left(|X_n - X| > \delta\right) \le \mu(A) < \epsilon \implies \forall \delta,\ \mu\left(|X_n - X| > \delta\right) \to 0
+$$
+This is just the definition of $X_n \xrightarrow{\mu} X$. $\square$
 
 ------
 
+### Exercise 4
 
+If $X_n \stackrel{\mu}{\longrightarrow} X$, then there exists a subsequence $X_{n^{\prime}} \stackrel{\text { a.u. }}{\longrightarrow} X$.
 
+**Solution**
 
+Based on the definition of convergence by measure, we know that there exists $N_1$ such that when $n_1 > N_1$, 
+$$
+\mu\left(|X_{n_1} - X| \ge 1 \right) := \mu(A_1) < 2^{-1}
+$$
+Similarly, we can have $n_2 > \max\{N_2, n_1\}$ such that 
+$$
+\mu\left(|X_{n_2} - X| \ge \frac{1}{2} \right):= \mu(A_2) < 2^{-2}.
+$$
+In general, for $k \in \mathbb N$, $n_k > \max\{N_{k}, n_{k-1}\}$ and 
+$$
+\mu\left(|X_{n_k} - X| \ge \frac{1}{k} \right):= \mu(A_k) < 2^{-k}.
+$$
+In this way, we construct a sequence $\{X_{n^\prime}\} = \{X_{n_1}, X_{n_2}, \dots\}$. Now for any $\epsilon > 0$, let $N_{\epsilon} = \lceil 1 - \log_2 \epsilon\rceil + 1$, then consider the set 
+$$
+A_{\epsilon} = \bigcup_{n^\prime=N_{\epsilon}}^\infty A_{n^\prime}, \ \mu(A_{\epsilon}) \le \sum_{n^\prime = N_\epsilon}^\infty \mu (A_{n^\prime}) < \sum_{i = 1}^\infty \frac{\epsilon}{2^{-i}} < \epsilon.
+$$
+$\forall \delta > 0$, on $A_\epsilon^c$, we have that as long as $n^\prime > \max\left\{\left\lceil \frac{1}{\delta}\right\rceil + 1, N_{\epsilon}\right\}$, 
+$$
+|X_{n^\prime} - X| < \delta \implies X_{n^\prime} \xrightarrow{\text u} X.
+$$
+Then this is the subsequence we are looking for.
 
+------
 
+### Exercise 5
 
+*Egoroff's theorem.* If $\mu$ is finite, then $X_n \stackrel{\text { a.e. }}{\longrightarrow} X$, implies that $X_n \stackrel{\text { a.u. }}{\longrightarrow} X$. Compare with 3. (Neglect the null set of divergence, and form $A=\bigcup_{m=1}^{\infty} A_m$ with $A_m=\bigcup_{k \ge n(m)}\left[\left|X_k-X\right| \ge \frac{1}{m}\right]$ and $n(m)$ such that $\mu A_m<\frac{\epsilon}{2^m}$.)
 
+**Solution**
 
-3. If $X_n \stackrel{\mu}{\longrightarrow} X$, then there exists a subsequence $X_{n^{\prime}} \stackrel{\text { a.u. }}{\longrightarrow} X$.
-4. Egoroff's theorem. If $\mu$ is finite, then $X_n \stackrel{\text { a.e. }}{\longrightarrow} X$, implies that $X_n \stackrel{\text { a.u. }}{\longrightarrow} X$. Compare with 3. (Neglect the null set of divergence, and form $A=\bigcup_{m=1}^{\infty} A_m$ with $A_m=\bigcup_{k \geqq n(m)}\left[\left|X_k-X\right| \geqq \frac{1}{m}\right]$ and $n(m)$ such that $\mu A_m<\frac{\epsilon}{2^m}$.)
+If $\mu$ is finite, then by the convergence a.e. criterion (page 116), we have 
+$$
+\mu \bigcup_\nu\left[\left|X_{n+\nu}-X\right| \ge \epsilon\right] \rightarrow 0
+$$
+Therefore, $\forall \epsilon$, based on the given hint, for any $m \in \mathbb N$, $\exists n(m)$ such that when $k = n + v \ge n(m)$, 
+$$
+\mu \left(\bigcup_{k \ge n(m)}\left[\left|X_{k}-X\right| \ge \frac{1}{m}\right]\right) := \mu (A_m) < \frac{\epsilon}{2^m}
+$$
+As a result, if we define $A=\bigcup_{m=1}^{\infty} A_m$, then $\mu(A) < \epsilon$. Furthermore, on $A^c$, $\forall \delta > 0$, as long as $n \ge n\left(\left\lceil \frac{1}{\delta}\right\rceil\right)$, we have 
+$$
+|X_n - X| < \frac{1}{\left\lceil \frac{1}{\delta}\right\rceil} < \delta \implies X_n \xrightarrow{\text u} X
+$$
+Combine the previous statement together, we have $X_n \xrightarrow{\text{a.u.}} X$. 
+
+The finiteness gives us a nice property that gets rid of the intersection regarding $n$. $\square$
+
+### Exercise 6
+
+*Lusin's theorem.* If $\mu$ is $\sigma$-finite, then $X_n \stackrel{\text { a.e. }}{\rightarrow} X$ implies that $X_n \stackrel{\mathrm{u}}{\rightarrow} X$ on every element $A_j$ of some countable partition of $\Omega-N$ where $N$ is some null set. (Neglect the null set of divergence, and start with $\mu$ finite. Use Egoroff's theorem to select inductively sets $A_k$ such that $\mu \bigcap_{k=1}^n A_k<\frac{1}{n}$ and $X_n \stackrel{\mathrm{u}}{\rightarrow} X$ on $A_k^c$ for every $\left.k.\right)$
+
+**Solution**
+
+According to the hint, we start with $\mu$ finite and we only need to consider this case. In fact, $\mu$ being $\sigma$-finite means that we can partition $\Omega$ into countably many $A_j$'s where we have finite value of $\mu$. Since $X_n \xrightarrow{\text{a.e.}} X$ and $\mu$ is finite, we know from Egoroff's theorem that $X_n\xrightarrow{\text{a.u.}} X$. Therefore, we can select set $A_k, k = 1, 2, \dots$ as such that $\mu(A_k) < \frac{1}{k}$ and on $A_k^c$ we have $X_n \xrightarrow{\text{u}} X$. Now consider $A = \cap_{k=1}^\infty A_k$. We must have that for any $n > 0$,
+$$
+0 \le \mu(A) \le \inf \mu(A_k) < \frac{1}{n} \implies \mu(A) = 0
+$$
+Therefore, we have that, except for a null set, $X_n\xrightarrow{\text u} X$. Since the countable union of null sets is still null, the general conclusion for $\Omega-N$ holds.
+
+### Exercise 7
+
+If $\mu$ is finite, then $X_n \stackrel{\text { a.e. }}{\longrightarrow} X$ implies existence of a set of positive measure on which the $X_n$ are uniformly bounded. What if $\mu$ is $\sigma$-finite?
+
+**Solution**
+
+Based on exercise 2, if $\mu$ is finite, suppose that $\mu(\Omega) =  \mu_0$, then $\exists A, 0 < \epsilon_0 < \frac{\mu_0}{4}$, $\mu(A) < \epsilon_0$, and on $A^c$, there is $x_0 < \infty$ such that $|X| < x_0$. Since $X_n \xrightarrow{\text{a.e.}} X$, according to the convergence a.e. criterion, we have that 
+$$
+\mu \bigcup_\nu\left[\left|X_{n+\nu}-X\right| \ge \epsilon\right] \rightarrow 0.
+$$
+Therefore, there exists $N > 0$ such that when $n > N$, 
+$$
+\mu \bigcup_\nu\left[\left|X_{n+\nu}-X\right| \ge x_0 \right]:= \mu(A^\prime) < \frac{\mu_0}{4}.
+$$
+As a result, we have that as long as $n > N$, $|X_n| < 2x_0$. For the remaining $N$ elements, $X_1, \dots, X_N$, using the result of exercise 2 again, there exists $A_1, A_2, \dots, A_N$, all with measure $\frac{\mu_0}{4N}$ and on $A_i^c$, $X_i$ is bounded.  Let us denote 
+$$
+x_1 = \max\left\{2x_0, \max\left\{X_i(\omega): i=1,\dots,N, \omega\in \bigcup_{i=1}^N A_i\right\}\right\}.
+$$
+If we let
+$$
+B = \Omega - A - A^\prime - \bigcup_{i=1}^N A_i
+$$
+then on $B$, $|X_n| < x_1$, and 
+$$
+\mu(B) > \mu_0 - \epsilon_0 - \frac{\mu_0}{4} - N\cdot\frac{\mu_0}{4N} > \frac{\mu_0}{4} = 0.
+$$
+Therefore, $B$ is the set we are looking for. If $\mu$ is $\sigma$-finite, then just look at one of its finite partition and everything will be the same. $\square$
