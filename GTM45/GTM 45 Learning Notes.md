@@ -719,7 +719,19 @@ $$
 $$
 Combine the previous statement together, we have $X_n \xrightarrow{\text{a.u.}} X$. 
 
-The finiteness gives us a nice property that gets rid of the intersection regarding $n$. $\square$
+The finiteness gives us a nice property that gets rid of the intersection regarding $n$. Actually, finiteness will give us continuity from above, which further ensures that conditions in (70) could be satisfied. 
+
+Notice that 
+$$
+\bigcap_n \bigcup_\nu\left[\left|X_{n+\nu}-X\right| \geqq \epsilon\right] = \lim_{n\to \infty }\bigcup_\nu\left[\left|X_{n+\nu}-X\right| \geqq \epsilon\right]
+$$
+becaues $\bigcup_\nu\left[\left|X_{n+\nu}-X\right| \geqq \epsilon\right]$ is a monotonic decreasing sequence as $n \uparrow$.  Therefore, the a.e. criterion is equivalent to say that when $\mu$ is finite,
+$$
+\mu\left(\lim_{n\to \infty} \bigcup_\nu\left[\left|X_{n+\nu}-X\right| \geqq \epsilon\right]\right) = 0 \implies \lim \mu \left(\bigcup_\nu\left[\left|X_{n+\nu}-X\right| \geqq \epsilon\right]\right) \to 0.
+$$
+which is true. We can also refer to exercise 9 of Chapter 1 for this. $\square$
+
+------
 
 ### Exercise 6
 
@@ -732,6 +744,8 @@ $$
 0 \le \mu(A) \le \inf \mu(A_k) < \frac{1}{n} \implies \mu(A) = 0
 $$
 Therefore, we have that, except for a null set, $X_n\xrightarrow{\text u} X$. Since the countable union of null sets is still null, the general conclusion for $\Omega-N$ holds.
+
+------
 
 ### Exercise 7
 
@@ -760,3 +774,65 @@ $$
 \mu(B) > \mu_0 - \epsilon_0 - \frac{\mu_0}{4} - N\cdot\frac{\mu_0}{4N} > \frac{\mu_0}{4} = 0.
 $$
 Therefore, $B$ is the set we are looking for. If $\mu$ is $\sigma$-finite, then just look at one of its finite partition and everything will be the same. $\square$
+
+------
+
+### Exercise 8
+
+If $\mu$ is finite, then $X_{m n} \stackrel{\text { a.e. }}{\longrightarrow} X_m$ as $n \rightarrow \infty$ and $X_m \stackrel{\text { a.e. }}{\longrightarrow} X$ as $m \rightarrow \infty$ imply that there exists subsequences $m_k, n_k$ such that $X_{m_k n_k} \stackrel{\text { a.e. }}{\longrightarrow} X$ as $k \rightarrow \infty$. What if $\mu$ is $\sigma$-finite?
+(Neglect the null sets of divergence. Select $A_k$ and $m_k$ such that $\mu A_k<\frac{1}{2^k}$ and $\left|X_{m_k}-X\right|<\frac{1}{2^k}$ on $A_k^c$. Select $B_k \subset A_k$ and $n_k$ such that $\mu B_k<\frac{1}{2^k}$ and $\left|X_{m_k n_k}-X_{m_k}\right|<\frac{1}{2^k}$ on $A_k-B_k$.)
+
+**Solution**
+
+If $\mu$ is finite, then using egoroff's theorem, we know that $X_{mn} \xrightarrow{\text{a.u.}} X_m$ and $X_m\xrightarrow{\text{a.u.}} X$. Now we begin the construction, for $k = 1, 2, \dots$, $\exists A_k$ such that $\mu(A_k) < \frac{1}{2^{k+1}}$ and $X_m \xrightarrow{\text{a.u.}} X$ on $A_k^c$. Therefore, $\exists M_1 >0$, when $m > M_1$, on $A_1^c$, $|X_m - X| < \frac{1}{2^2}$.  Take $X_{m_1} = X_{M_1+1}$. $\exists M_2 >0$, when $m_2 > M_2$,  on $A_2^c$, $|X_m - X| < \frac{1}{2^3}$.  Take $X_{m_2} = X_{\max\{m_1+1, M_2+1\}}$, etc. So we have selected $A_k$ and $m_k$ such that $\mu A_k<\frac{1}{2^{k+1}}$ and $\left|X_{m_k}-X\right|<\frac{1}{2^{k+1}}$ on $A_k^c$. 
+
+Similarly, we can select $B_k$ and $n_k$ such that $\mu B_k<\frac{1}{2^{k+1}}$ and $\left|X_{m_k n_k}-X_{m_k}\right|<\frac{1}{2^{k+1}}$ on $B_k^c$. As a result, we know that on $C_k^c = A^c_k \cap B_k^c$, $\left|X_{m_k n_k}-X\right|<\frac{1}{2^{k}}$ by the triangular inequality. And we can derive that
+$$
+\mu\left(C_k\right) = \mu\left((A^c_k \cap B_k^c)^c\right) = \mu(A_k \cup B_k) < \frac{1}{2^k}
+$$
+ 
+
+As a result, since $\mu$ is finite, we can use the a.e. criterion, $\forall \epsilon > 0, \delta > 0$, let $k = \left\lceil 1 - \log_2\left(\min\{\epsilon, \delta\}\right)\right\rceil$ + 1, then
+$$
+\begin{aligned}
+\mu\left(\bigcup_{v=0}^\infty \left[\left|X_{m_kn_k+v} - X\right|\ge \epsilon \right] \right) 
+& \le \mu \left(\bigcup_{v=0}^\infty \left[\left|X_{m_kn_k+v} - X\right|\ge \frac{1}{2^{k+v}} \right] \right) \\
+& = \sum_{v = 0}^{\infty} \frac{1}{2^{k+v}} = \frac{1}{2^{k-1}} < \delta
+\end{aligned}
+$$
+This is equivalent to say that 
+$$
+\mu\left(\bigcup_{v=0}^\infty \left[\left|X_{m_kn_k+v} - X\right|\ge \epsilon \right] \right), \ k \to \infty
+$$
+And so $X_{m_kn_k}\xrightarrow{\text{a.e.}} X$.
+
+If $\mu$ is $\sigma$-finite, we can prove the same conclusion on every $\mu$-finite partitions and then combine them together. Since the countable union of null set is still null, the a.e. condition holds for the universe $\Omega$ as well. $\square$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
