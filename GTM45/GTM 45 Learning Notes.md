@@ -808,21 +808,166 @@ And so $X_{m_kn_k}\xrightarrow{\text{a.e.}} X$.
 
 If $\mu$ is $\sigma$-finite, we can prove the same conclusion on every $\mu$-finite partitions and then combine them together. Since the countable union of null set is still null, the a.e. condition holds for the universe $\Omega$ as well. $\square$
 
+------
 
+### Exercise 9
 
+Let $X_n \stackrel{\mu}{\rightarrow} X, Y_n \stackrel{\mu}{\rightarrow} Y$. Do $a X_n+b Y_n \stackrel{\mu}{\rightarrow} a X+b Y,\left|X_n\right| \stackrel{\mu}{\rightarrow}|X|, X_n{ }^2 \stackrel{\mu}{\rightarrow}$ $X^2, X_n Y_n \stackrel{\mu}{\rightarrow} X Y$ ? What about $1 / X_n$ ? Let $\mu$ be finite and let $g$ on $\mathbb R$ or on $\mathbb R \times \mathbb R$ be continuous. What about the sequences $g\left(X_n\right)$ and $g\left(X_n, Y_n\right)$ ?
 
+**Solution**
 
+This is, in some sense, a combination of Slutsky Thoerem and continuous mapping theorem... I don't want to reinvent the wheel.
 
+------
 
+### Exercise 10
 
+Let the functions $X_n, X$ on the measure space be complex-valued or vector-valued or, more generally, let them take their values in some fixed Banach space. Denote the norm of $X$ by $|X|$, and denote $\left|X_n-X\right| \rightarrow 0$ by $X_n \rightarrow X$.
 
+Transpose the constructive definitions of measurability and the definitions of various types of convergence. Investigate the validity of the transposed of the corresponding properties established in the text, as well as of those stated above.
 
+**Solution**
 
+They work. Not interesting.
 
+------
 
+### Exercise 11
 
+Examples and counterexamples of mutual implications of types of convergence. Investigate convergences of the sequences defined below:
 
+1. The measure space is the Borel line with Lebesgue measure, $X_n=1$ on $[n, n+1]$ and $X_n=0$ elsewhere.
+2. The measure space is the Borel interval $(0,1)$ with Lebesgue measure, $X_n=1$ on $\left(0, \frac{1}{n}\right)$ and $X_n=0$ elsewhere.
+3. The measure space is the Borel interval $[0,1]$ with Lebesgue measure, the sequence is $X_{11}, X_{21}, X_{22}, X_{31}, X_{32}, X_{33}, \cdots$ with $X_{n k}=1$ on $\left[\frac{k-1}{n}, \frac{k}{n}\right]$ and $X_{n k}=0$ elsewhere.
+4. $\mathfrak a$ consists of all subsets of the set of positive integers, $\mu A$ is the number of points of $A, X_n$ is indicator of the set of the $n$ first integers.
 
+**Solution**
+
+**For 1**, the limiting function could only be that $X = 0$. Therefore, it is not convergence in measure (the measure for deviating from 0 will always be 1). If we consider a.e. convergence, then we should investigate 
+$$
+\begin{aligned}
+\mu \bigcap_n \bigcup_\nu\left[\left|X_{n+\nu}-X\right| \geqq \epsilon\right]
+& = \mu \bigcap_n \bigcup_\nu\left[\left|X_{n+\nu}\right| \geqq \epsilon\right] \\ 
+& = \mu \bigcap_n [n, \infty) \\
+& = 0
+\end{aligned}
+$$
+This is that for any $r < \infty, r\in \mathbb R$, there always exists $n > r$ so that $r$ is not in the intersection. Therefore, $X_n \xrightarrow{\text{a.e.}} X$. 
+
+**For 2**, the limiting function should be $X = 0$ and for any $\epsilon > 0, \delta > 0$, we know that as long as $n > \frac{1}{\delta}$,
+$$
+\mu\left(\left[ |X_n - 0|\right] > \epsilon \right) \le \frac{1}{n} < \delta.
+$$
+Hence, $X_n \xrightarrow{\mu} X$.
+
+On the other hand, since $\mu$ is finite on $(0, 1)$, we can use a simplified a.e. criterion. $\forall \epsilon$, consider 
+$$
+\begin{aligned}
+\mu \bigcup_\nu\left[\left|X_{n+\nu}-X\right| \geqq \epsilon\right]
+&= \mu\left(\left(0, \frac{1}{n}\right)\right) \to 0, \text{ as }n \to \infty.
+\end{aligned}
+$$
+Hence, $X_n \xrightarrow{\text{a.e.}} X$ as well.
+
+**For 3**, the limiting funtion here is still $X = 0$. The sequence $X_n \xrightarrow{\mu} X$ since $\forall \epsilon, \delta > 0$, as long as $n > \frac{1}{\delta}$,
+$$
+\mu\left(\left[ |X_n - 0|\right] > \epsilon \right) \le \frac{1}{n} < \delta.
+$$
+$\mu$ is still finite on $[0, 1]$ so we can consider the simplied criterion for a.e. convergence. Notice that 
+$$
+\begin{aligned}
+\mu \bigcup_\nu\left[\left|X_{n+\nu}-X\right| \geqq \epsilon\right]
+&= \mu\left(\left[0, 1\right]\right) = 1 \not\to 0, \text{ as }n \to \infty,
+\end{aligned}
+$$
+We have no a.e. convergence here.
+
+**For 4**, the limiting function $X$ could be either $0$ or $1$. For any finite $n$, $\mu\left(|X_n - 1| > \epsilon\right) > \infty - n$ and $\mu\left(|X_n| > \epsilon\right) = n$, this indicates the failure of convergence in measure. For a.e. convergene, if $X = 1$, then
+$$
+\begin{aligned}
+\mu \bigcap_n \bigcup_\nu\left[\left|X_{n+\nu}-X\right| \geqq \epsilon\right]
+& = \mu \bigcap_n \bigcup_\nu\left[\left|X_{n+\nu}\right| = 0 \right] \\ 
+& = \mu \bigcap_n \bigcup_\nu \{A: A\subset \mathfrak a, A \ne \{1, \dots, n+\nu\}\} \\
+& = \mu \bigcap_n \Omega > 0.
+\end{aligned}
+$$
+If $X = 0$, then 
+$$
+\begin{aligned}
+\mu \bigcap_n \bigcup_\nu\left[\left|X_{n+\nu}-X\right| \geqq \epsilon\right]
+& = \mu \bigcap_n \bigcup_\nu\left[\left|X_{n+\nu}\right| = 1 \right] \\ 
+& = \mu \bigcap_n \bigcup_\nu \{1, \dots, n+\nu\} \\
+& = \mu \bigcap_n \Omega > 0.
+\end{aligned}
+$$
+So failing to converge a.e. is obvious. $\square$
+
+------
+
+### Exercise 12
+
+If $X$ is integrable, then the set $[X \neq 0]$ is of $\sigma$-finite measure. What if $\int X$ exists? ($\mu[|X| \geqq c] \leqq \frac{1}{c} \int|X|$)
+
+**Solution**
+
+If $X$ is integrable, then $\int |X|$ is finite. Based on the hint, $\forall c \in \mathbb Z_+$, 
+$$
+\begin{aligned}
+	\mu\left[|X| > c \right] 
+	& = \int \mathbb I_{\{|X| \ge c\}} d\mu \\ 
+	& \le \frac{1}{c}\left[\int c \mathbb I_{\{|X| \ge c\}} d\mu + \int |X| I_{\{|X| < c\}} d\mu\right] \\
+	& \le \frac{1}{c}\int |X| d\mu = \frac{1}{c}\int |X| < \infty.
+\end{aligned}
+$$
+Therefore, since 
+$$
+[X \ne 0] = \bigcup_{c=0}^\infty\left[ |X| > c \right],
+$$
+we know that $[X \ne 0]$ is of $\sigma$-finite measure.
+
+If only $\int X$ exists, based on the definition, how about $\int_{-\infty}^\infty x  dx$ ? We cannot have $\sigma$-finiteness. $\square$
+
+------
+
+### Exercise 13
+
+Let $(T, \mathfrak T, \tau)$ be a measure space, to every point $t$ of which is assigned a measure $\mu_t$ on $\mathfrak a$. Let the function on $T$ defined by $\mu_t A$ for any fixed $A$ be $\mathfrak T$-measurable.
+
+The relation $\mu A=\int_T \mu_t A d \tau(t)$ defines a measure $\mu$ on $\mathfrak a$. If $\int_{\Omega} X(\omega) d \mu(\omega)$ exists, then the function defined on $T$ by $U(t)=\int_{\Omega} X(\omega) d \mu_t(\omega)$ exists and is $\mathfrak T$-measurable, and $\int_{\Omega} X(\omega) d \mu(\omega)=\int_T U(t) d \tau(t)$.
+
+------
+
+### Exercise 14
+
+Let $\varphi$ be the indefinite integral of $X$. Express $\varphi^{+}, \varphi^{-}, \bar{\varphi}$ in terms of $X$.
+
+**Solution**
+$$
+\varphi(\cdot) = \int_{\cdot} X d\varphi
+$$
+Based on the definition of $\varphi^+$, we know that for $A, B \in \mathfrak a$
+$$
+\varphi^+(A) = \sup_{B\subset A} \varphi(B) = \sup_{B\subset A} \int_{B} X d\varphi = \int_A X^+ d\varphi
+$$
+Similarly, we know that 
+$$
+\varphi^-(\cdot) = \int_{\cdot} X^- d\varphi
+$$
+And so 
+$$
+\bar\varphi(\cdot) = \int_{\cdot} (X^+ + X^-) d\varphi = \int_{\cdot} |X| d\varphi.
+$$
+$\square$
+
+------
+
+### Exercise 15
+
+If $\int_A X_n \rightarrow 0$ uniformly in $n$ as $\mu A \rightarrow 0$ or as $A \downarrow \emptyset$, then the same is true of $\int_A\left|X_n\right| ;$ and conversely. Interpret in terms of signed measures.
+$$
+\left(\int_A\left|X_n\right|=\int_{A\left[X_n \geqq 0\right]} X_n-\int_{A\left[X_n<0\right]} X_n .\right)
+$$
+**Solution**
 
 
 
