@@ -8,7 +8,7 @@ A nonnegative additive set function is called a content or a measure according a
 
 ------
 
-### Exercise 1
+### Exercise 1 (Discussion)
 
 If $\varphi$ is $\sigma$-finite, then there are only countably many disjoint sets for which $\varphi \neq 0$ in every class.
 
@@ -16,17 +16,33 @@ If $\varphi$ is $\sigma$-finite, then there are only countably many disjoint set
 
 **Solution**	
 
-If we let every class we are considering be a $\sigma$-field $\mathfrak{a}$ over the space $\Omega$, then the proof is as follows. 
+We only considering a $\sigma$-field $\mathfrak{a}$ over the space $\Omega$. The proof is as follows. 
 
-Based on the definition of signed measure, one of $\varphi^+$ and $\varphi^-$ should be finite. Therefore, every set in $\mathfrak{a}$ is also a countable union of sets in $\mathfrak{a}$ at which $\varphi^+$ and $\varphi^-$ is finite (so that there is no set with infinite value of $\varphi$). 
+According to the given condition, we could write
+$$
+\Omega = \bigcup_{i=1}^\infty A_i
+$$
+where $0 \le \left|\varphi(A_i)\right| < \infty$. Based on the definition of signed measure, one of $\varphi^+$ and $\varphi^-$ should be finite. Therefore, we know that $0 \le \varphi^+(A_i) < \infty$ and $0 \le \varphi^-(A_i) < \infty$.
 
-According to the given condition, the space $\Omega$ could be expressed as a countable union of subsets of itself, i.e. $\cup_{n=1}^\infty A_n$ or $\cup_{n=N}^\infty A_n$ where each $A_n$ has finite value of $\varphi$, which also means that $\varphi^+$ and $\varphi^-$ has finite value over these sets.
+Now, assume that there are uncountably many disjoint sets for which $\varphi\ne 0$. Then there must be uncountably many disjoints set for which $\varphi^+ \ne 0$ or $\varphi^- \ne 0$ (or both).  Without loss of generality, assume $\varphi^+ \ne 0$ (the following will be the same for the case where $\varphi^- \ne 0$). Denote these uncountably many sets as $B_u, u \in \mathcal U$ where $\mathcal U$ is some index set. We will show that it is impossible and so the proposition for this exercise is correct.
 
-Now suppose there are uncountably many disjoint sets for which $\varphi \ne 0$. Denote them as $B_i, i\in \mathcal I$ where $\mathcal I$ is some index set. We know that $\cup_n A_n \supe \cup_i B_i$.  Therefore, at least one of $A_{n_0}$ is a union of uncountably many $B_{i^\prime} \in \{B_i\}$ whose corresponding value of $\varphi$ is finite and nonzero. This means that there should be uncountably many sets $B_{i^{''}} \in \{B_{i^{'}}\}$ over which the value of $\varphi^+$ or $\varphi^-$ is positive. Without loss of generality, assume it is $\varphi^+$. We have that $\cup B_{i^{''}}\sube A_{n_0}$ and so $0 < \varphi^+(\cup {B_{i^{''}}}) < \varphi^+(A_{n_0}) < \infty$. 
-
-Now we only need to prove that only countably many elements in $\cup {B_{i^{''}}}$ is positive, which, by contradiction, will prove our proposition. Suppose $\varphi^+(\cup {B_{i^{''}}}) < M$. Then for an arbitrary positive integer $N$, $\mathcal B_{N} = \{B_{i^{ii}} \subset \mathcal B| \varphi^+(B_{i^{''}}) > \frac{1}{N}\}$ has at most $NM$ elements . Therefore, the set for all ${B_{i^{''}}}$'s such that the corresponding value of $\varphi^+$ is positive is $\cup_{N=1}^\infty\mathcal B_N$. This union is a countable union over finite sets which has countably many members. This means that for $\varphi^+$ and so $\varphi$, it is always true that we can only find countably many disjoint sets whose corresponding function value is finite and nonzero. 
-
-Therefore, we found a contradiction.	$\square$ 
+For an arbitrary $i$, denote $B_{u,i} = B_u \cap A_i$. Then clearly $A_i \supset \cup_{\mathcal U} B_{u, i}$. Without loss of generality, assume $\varphi^+(A_i) = M < \infty$. For any $N \in Z_+$, we argue that 
+$$
+|C_N| \le NM, \ \text{where } C_N = \left\{B_{u, i}: \varphi^+(B_{u,i}) > \frac{1}{N}\right\}
+$$
+Otherwise, take an arbitrary countable subset $\widetilde C_N$ of $C_N$, by the additivity,
+$$
+\varphi^+\left(\bigcup_{\widetilde B_{u, i}\in \widetilde C_N} \widetilde B_{u, i}\right) > \frac{1}{N}NM = M = \varphi^+(A_i)
+$$
+This is contradictory since 
+$$
+\bigcup_{\widetilde B_{u, i}\in \widetilde C_N} \widetilde B_{u, i} \subset  \cup_{\mathcal U} B_{u, i} \subset A_i \implies \varphi^+\left(\bigcup_{\widetilde B_{u, i}\in \widetilde C_N} \widetilde B_{u, i}\right) \le \varphi^+(A_i).
+$$
+Therefore, since countably union of countable sets are countable, and that $\varphi^+(B_{u}) > 0$ if there exists an $i$ such that $\varphi^+(B_{u, i}) > 0$,
+$$
+\left|\left\{B_u: \varphi^+(B_u) \right\}\right| = \left|\bigcup_{i=1}^\infty\left\{B_{u, i}: \varphi^+(B_{u,i}) > 0\right\}\right| = \left|\bigcup_{i=1}^\infty\bigcup_{N=1}^\infty C_N \right| = \aleph_0,
+$$
+which means there has to be only countably many $B_u$'s such that $\varphi^+(B_u) >0$. 	$\square$ 
 
 ------
 
@@ -68,7 +84,7 @@ Things are completely an analogy when $\varphi^-(A) > \varphi^+(A)$, just let $B
 
 ------
 
-### Exercise 3
+### Exercise 3 
 
 If $\varphi_1 \le \varphi_2$, then $\varphi_1^{+} \le \varphi_2^{+}, \varphi_1^{-} \ge \varphi_2^{-}$. If $\varphi=\varphi_1 \pm \varphi_2$, then $\varphi^{\pm} \le \varphi_1 ^\pm+\varphi_2 ^\pm$.
 
@@ -232,7 +248,7 @@ If $\varphi = \infty$ except for $\empty$, then the conclusion is not true since
 
 ------
 
-### Exercise 7
+### Exercise 7 (Discussion)
 
 If $\mu$ is finite, then $\Omega=\sum A_j+A$ where the $A_j$ or $A$ may be absent but, if present, then the $A_j$ are $\mu$-atoms of positive measure and, for every $B \subset A$ of positive measure, $\mu$ takes every value $c$ between 0 and $\mu B$ for measurable subsets of $B$. This decomposition of $\Omega$ is determined up to $\mu$-null sets. Can $\mu$ be replaced by $\varphi$ ?
 
@@ -240,13 +256,13 @@ If $\mu$ is finite, then $\Omega=\sum A_j+A$ where the $A_j$ or $A$ may be absen
 
 **Solution**
 
-According to the statement, only $A$ could be non-atomic. $\Omega=\sum A_j+A$ is given so we do not prove that $A_j$ is $\mu$-atoms.  Now suppose we have such $A_j$'s, then clearly there are only coutably many of $\mu$-equivalent classes of them. Otherwise, uncountably sum of positive values will lead to infinite value of $\mu(\Omega)$ which is contradictory. Select representatives $A_j$ of these classes and let $B \subset A=\Omega-\sum A_j$. 
+According to the statement, only $A$ could be non-atomic. $\Omega=\sum A_j+A$ is given so we do not prove that $A_j$ is $\mu$-atoms.  Now suppose we have such $A_j$'s, then clearly there are only coutably many of $\mu$-equivalent classes of them. Otherwise, uncountable sum of positive values will lead to infinite value of $\mu(\Omega)$ which is contradictory. Select representatives $A_j$ of these classes and let $B \subset A=\Omega-\sum A_j$. 
 
 We now actually wants to show that $A$ could be "infinitely divided" into sets with smaller measures. Based on the hint, we can inductively select sets. Let $n = 1$, then can we select a set $C_1$ from $B$ such that $C_1 \in \mathcal{C}_1$ such that $\mu C_1>\sup \mu C-1$ for all $C \in \mathcal{C}_1$, where $\mathcal{C}_1$ is the class of all $C \subset B$ for which $\mu C \le c$. We only need to show that there are sets satisfying $\mu C \le c$ and the rest is obvious since we could always select the that $C_1$ based on the definition of $\sup$. 
 
-If there is no $C\subset B$ such that $\mu C \le c$, then it will lead to a contradictory since it means that there is also no sets $D\subset$ satisfying $\mu D \ge \mu B - c$. We can take a sequence $D_n \to B$, so that $B-D_n \to \emptyset$ while $\mu(B-D_n) \ge \mu B -c > 0$, which is impossible since $\mu$ is continuous (*CONTINUITY THEOREM FOR ADDITIVE SET FUNCTIONS*). So that we can always find $C$'s with $\mu C \ge c$. 
+If there is no $C\subset B$ such that $\mu C \le c$, then it will lead to a contradiction since it means that there is also no sets $D\subset$ satisfying $\mu D \ge \mu B - c$. We can take a sequence $D_n \to B$, so that $B-D_n \to \emptyset$ while $\mu(B-D_n) \ge \mu B -c > 0$, which is impossible since $\mu$ is continuous (*CONTINUITY THEOREM FOR ADDITIVE SET FUNCTIONS*). So that we can always find $C$'s with $\mu C \le c$. 
 
-Similarly, we could find $C_2$, $C_3$, $\dots$ We know that $\mu\left(\bigcup_{i=1}^n C_n\right)$ is an increasing sequence. Moreover, by the construction we know that $\mu\left(\bigcup_{i=1}^n C_n\right) - \frac{1}{n} > c$ since $\sup \mu C \ge c - \mu\left(C_1 \cup C_2 \cup \ldots \cup C_{n-1}\right)$ (Actually each $C_i$ is disjoint with each other, and this inequality follows from the non-atomic property of $B$ as we argue previously). Therefore, by the continuity, $\lim_{n\to\infty} \mu\left(\bigcup_{i=1}^n C_n\right) = \mu\left(\lim_{n\to\infty}\bigcup_{i=1}^n C_n\right) = c$. Then $\mu C=c$ for $C=\bigcup C_{n .}$ 
+Similarly, we could find $C_2$, $C_3$, $\dots$ We know that $\mu\left(\bigcup_{i=1}^n C_n\right)$ is an increasing sequence. Moreover, by the construction we know that $\mu\left(\bigcup_{i=1}^n C_n\right) > c - \frac{1}{n}$ since $\sup \mu C \ge c - \mu\left(C_1 \cup C_2 \cup \ldots \cup C_{n-1}\right)$. (Actually each $C_i$ is disjoint with each other, and this inequality follows from the non-atomic property of $B$ as we argue previously. Otherwise, if $\sup \mu C <c - \mu\left(C_1 \cup C_2 \cup \ldots \cup C_{n-1}\right)$, then denote $\delta = c - \mu\left(C_1 \cup C_2 \cup \ldots \cup C_{n-1}\right) - \sup \mu C$. There will be no set $C^\prime$ in $B-\left(C_1 \cup C_2 \ldots \cup C_{n-1}\right)$  satisfying $\mu C^\prime < \delta$, which leads to the same contraction in the previous paragraph). Therefore, by the continuity, $\lim_{n\to\infty} \mu\left(\bigcup_{i=1}^n C_n\right) = \mu\left(\lim_{n\to\infty}\bigcup_{i=1}^n C_n\right) = c$. Then $\mu C=c$ for $C=\bigcup C_{n .}$ 
 
 Can $\mu$ be replaced by $\varphi$? Is it possible for $\varphi$ to take every value $c$ between some values? 
 
@@ -254,7 +270,7 @@ We may show that $\varphi$ could take any value between $-\varphi^-$ and $\varph
 
 ------
 
-### Exercise 8
+### Exercise 8 (Check)
 
 If $\varphi$ is finitely additive, $\mu$ is finite, and $\mu A_n \rightarrow 0$ implies $\varphi A_n \rightarrow 0$, then $\varphi$ is $\sigma$-additive. *We say that $\varphi$ is $\varphi_0$-continuous if $\varphi_0 A=0$ implies $\varphi A=0$*.
 
@@ -276,7 +292,7 @@ which means $\sigma$-addtivity. $\square$
 
 ------
 
-### Exercise 9
+### Exercise 9 (Discussion)
 
 If $\mu A_n \rightarrow 0$ implies $\varphi A_n \rightarrow 0\left(\bar{\varphi} A_n \rightarrow 0\right)$, then $\varphi$ is $\mu$-continuous. If $\varphi$ is finite, then the converse is true.
 (Assume the contrary of the converse; there exist $\epsilon>0$ and $A_n$ such that $\mu A_n<\frac{1}{2^n}$ and $\bar{\varphi} A_n \geqq \epsilon$. Then $\mu B=0$ and $\bar{\varphi} B \geqq \epsilon$ for $B=\lim \sup A_n$.)
@@ -304,7 +320,7 @@ If $\mu$ is replaced by a signed measure $\varphi_0$. Then we consider the same 
 
 ------
 
-### Exercise 10
+### Exercise 10 (Check)
 
 If the $\mu_j$ are finite measures, then there exists a $\mu$ such that all the $\mu_j$ are $\mu$-continuous. (Take $\mu=\sum \mu_j / 2^j \mu_j \Omega$.) What about $\mu_j$ 's replaced by $\varphi_j$ 's?
 
@@ -312,7 +328,7 @@ If the $\mu_j$ are finite measures, then there exists a $\mu$ such that all the 
 
 Take $\mu=\sum \mu_j / 2^j \mu_j \Omega$. Since it is the linear combination of $\mu_j$'s, it is a measure. If $\mu = 0$, by the nonnegativity of measures, we must have all $\mu_j$'s being zero.
 
-If $\mu_j$'s are replaced by signed measures $\varphi_j$'s. Let's consider $\varphi_j^+$ and $\varphi_j^-$'s. Following the same manner we can construct $\varphi^\pm$ such that $\varphi^\pm = 0 \implies \varphi_j^\pm$. If we consider $\bar \varphi$, then $\bar\varphi = 0$ iff $\varphi^\pm = 0$.  Therefore, 
+If $\mu_j$'s are replaced by signed measures $\varphi_j$'s. Let's consider $\varphi_j^+$ and $\varphi_j^-$'s. Following the same manner we can construct $\varphi^\pm$ such that $\varphi^\pm = 0 \implies \varphi_j^\pm = 0$. If we consider $\bar \varphi$, then $\bar\varphi = 0$ iff $\varphi^\pm = 0$.  Therefore, 
 $$
 \bar\varphi = 0\iff \varphi^\pm = 0 \implies \varphi_j^{\pm} = 0 \implies \varphi_j = 0
 $$
@@ -329,7 +345,7 @@ $$
 \end{array}
 $$
 
-### Exercise 11
+### Exercise 11 (Undone)
 
 *Decomposition theorem*. $\varphi_r$ is regular, $\varphi_s$ is singular, and $\varphi=\varphi_r+\varphi_{\mathrm{s}}$. If $\varphi$ is finite, then the decomposition of $\varphi$ into a regular and a singular part is unique. What if $\varphi$ is $\sigma$-finite? What if $\mathfrak a$ consists of all subsets of a noncountable space, and $\varphi(A)$ equals the number of points of $A$ ? (Proceed as follows:
 
@@ -341,7 +357,7 @@ $$
 
 **Solution**
 
-### Exercise 12
+### Exercise 12 (Undone)
 
 We can take for singular sets:
 
@@ -353,7 +369,7 @@ In each case investigate the regular and singular parts.
 
 ------
 
-### Exercise 13
+### Exercise 13 (Discussion)
 
 *Intermediate-value theorem* (compare with continuous function on a connected set). If $A$ is nonatomic and $A_n \uparrow A$ with $\varphi A_n$ finite, then $\varphi$ takes every value between $-\varphi^-A$ and $+\varphi^{+} A$ for measurable subsets in $A$. (See 7.) What if $\mathfrak a$ consists of all sets in a noncountable space, $\varphi(A)=0$ or $\infty$ according as $A$ is countable or not?
 
@@ -419,7 +435,7 @@ The rest remains the same. Same techniques apply for $\varphi^-$. $\square$
 
 ------
 
-### Exercise 15
+### Exercise 15 (Check)
 
 If $\varphi_n \uparrow(\downarrow)$ and $\varphi_1>-\infty(<+\infty)$, then $\varphi_n \rightarrow \varphi$ $ \sigma$-additive.
 
@@ -435,7 +451,7 @@ Therefore, $\varphi\left(\sum_{k=1}^\infty A_k\right) \le \sum_{k=1}^\infty\varp
 
 On the other hand, by the monotonicity of $\varphi_n$. $\forall \epsilon > 0$, there exists $N_1$, such that $\forall n > N_1$, $\varphi_{n}(A_1) > \varphi(A_1) - \frac{\epsilon}{2}$... In general, we can always have $N_k > N_{k-1} > \dots > N_1$,  $\varphi_{N_k+1}(A_k) > \varphi(A_k) - \frac{\epsilon}{2^k}$. Therefore, 
 $$
-\sum_{k=1}^K \varphi(A_k) - \epsilon < \sum_{k=1}^K\varphi_{N_k+1}(A_k) \le \sum_{k=1}^K\varphi_{N_K+1}(A_k) \le \varphi_{N_K+1}\left(\sum_{k=1}^K A_k \right) \le \varphi\left(\sum_{k=1}^K A_k \right)
+\sum_{k=1}^K \varphi(A_k) - \epsilon < \sum_{k=1}^K\varphi_{N_k+1}(A_k) = \varphi_{N_K+1}\left(\sum_{k=1}^K A_k \right) \le \varphi\left(\sum_{k=1}^K A_k \right)
 $$
 Therefore, $\forall \epsilon > 0, K < \infty$, $\sum_{k=1}^K \varphi(A_k) - \epsilon < \varphi\left(\sum_{k=1}^K A_k \right) \implies \sum_{k=1}^K \varphi(A_k) \le \varphi\left(\sum_{k=1}^K A_k \right)$. Since taking limit preserves partial inequality, we must have $\sum_{k=1}^\infty \varphi(A_k) \le \varphi\left(\sum_{i=1}^\infty A_k \right)$.
 
@@ -447,7 +463,7 @@ Just consider $\varphi_n^\prime = M - \varphi_n \uparrow$. $\square$
 
 ------
 
-### Exercise 16
+### Exercise 16 (Check)
 
 If $\varphi_n \rightarrow \varphi$ uniformly on $\mathfrak a$ and $\varphi>-\infty$ or $\varphi<+\infty$, then $\varphi$ is $\sigma$-additive.
 
@@ -477,7 +493,7 @@ and $\sigma$-addtivity is proved. $\square$
 
 *If $d\left(x_m, x_n\right) \rightarrow 0$ implies that $x_n \rightarrow$ some $x$, then the mutual convergence criterion is valid, and we say that the space is complete.*
 
-### Exercise 17
+### Exercise 17 (Discussion)
 
 To a measure space $(\Omega, \mathfrak a, \mu)$ associate a complete metric space $(\mathcal{X}, d)$ as follows: $\mathcal X$ is the space of all sets $A, B$ of finite measure, $d$ is a metric defined by $d(A, B)=\mu\left(A B^c+A^c B\right)$. Prove that the metric space is complete.
 (If $A_n$ is a mutually convergent sequence in $\mathcal X$, then the sequence $I_{A_n}$ mutually converges in measure and hence converges in measure - see Page 116 6.3.)
@@ -514,7 +530,7 @@ We say that the $\varphi_n$ are uniformly $\mu$-continuous if $\mu A_m \rightarr
 
 ***Baire's category theorem** Every complete metric space is of the second category.*
 
-### Exercise 18
+### Exercise 18 (Discussion)
 
 Let $\mu$ be $\sigma$-finite. If the finite $\varphi_n$ are $\mu$-continuous and $\lim \varphi_n$ exists and is finite, then the $\varphi_n$ are uniformly $\mu$-continuous and $\lim \varphi_n=\varphi$ is $\mu$-continuous and $\sigma$-additive. 
 
@@ -534,8 +550,19 @@ Since $\delta$ could be arbitrarily small, we must have $|\varphi_m(B) - \varphi
 
 By Baire's category theorem, there exists $k_0, d_0$ and $A_0 \in \mathcal X$ such that $\left[A \in \mathcal X ; d\left(A, A_0\right)<d_0\right] \subset A_{k_0}$. Why?  
 
-First of all, we know that $\mathcal X$ contains a sphere, which is in the form of $\widetilde{\mathcal X} = \left[A \in \mathcal X ; d\left(A, A_0\right) < d_0\right]$. Now, we need to show that there exists $k_0$ such that $\widetilde{\mathcal X} \subset A_{k_0}$. Since by asssumption, $\varphi_n \to \varphi$, for $\widetilde{\mathcal X}$, there exists $N_0 > 0$ such that when $m, n > N_0$ ,  $\left|\varphi_n(\widetilde{\mathcal X}) - \varphi_m(\widetilde{\mathcal X})\right| < \frac{\epsilon}{3}$ (convergence to mutual convergence for real sequence). Take $k_0 = N_0 + 1$ then $\widetilde{\mathcal X} \subset A_{k_0}$.
+First of all, we know that $\mathcal X$ contains a sphere, which is in the form of $\widetilde{\mathcal X} = \left[A \in \mathcal X ; d\left(A, A_0\right) < d_0\right]$. Now, we need to show that there exists $k_0$ such that $\widetilde{\mathcal X} \subset A_{k_0}$. For any set $A \in \mathcal X$, given $\varphi_n \to \varphi$, we know that there exists some $\tilde k$ such that whenever $m, n > \tilde k$, 
+$$
+\left|\varphi_m\left(A\right) - \varphi_n\left(A\right)\right| < \frac{\epsilon}{3}.
+$$
+Therefore, we have 
+$$
+\mathcal X = \bigcup_{k=1}^\infty A_k
+$$
+As a result, we could select some $\widetilde{\mathcal X} \subsetneq \mathcal X =  \bigcup_{k=1}^\infty A_k$ by choosing the proper value of $d_0$, i.e., if for some $d$, $\mathcal X = \left[A \in \mathcal X ; d\left(A, A_0\right) < d\right]$ and for any $\tilde d  < d$, $\mathcal X \supset \left[A \in \mathcal X ; d\left(A, A_0\right) < \tilde d\right]$, then letting $d_0 = \frac{d}{2}$ will suffice.  $\widetilde{\mathcal X} \subsetneq \bigcup_{k=1}^\infty A_k$ means that there exists some $k_0$ such that $\widetilde{\mathcal X} \subsetneq \bigcup_{k=1}^{k_0} A_k$. By the definition of $A_k$ we know that $A_{k+1} \supset A_k$. Hence, 
 
+$$
+\widetilde{\mathcal X} \subsetneq \bigcup_{k=1}^{k_0} A_k = A_{k_0}.
+$$
 By $\mu$-continuity, $\exists \delta_0$ such that when $\mu A(\text{ or some }A_m) < \delta_0$, $|\varphi_n A| < \frac{\epsilon}{3}$ where $n \le k_0$ (finite $n$'s). This could always be done based on exercise 9, i.e., $\mu \to 0$ implies $\varphi_n \to 0$ because of finiteness. If $\mu A<\delta_0$, then 
 $$
 d\left(A_0-A, A_0\right) = \mu\left((A_0 - A)^c A_0 + (A_0 - A)A_0^c\right) = \mu(A_0\cap A) \le \mu(A) < \delta_0 < d_0,
@@ -602,7 +629,7 @@ If $\left|\varphi_n\right| \le c_n$, set $\mu A=\sum \frac{1}{2^n c_n}\left|\var
 
 **Notation.** Unless otherwise stated, the measure space $(\Omega,\mathfrak a, \mu)$ is fixed, the (measurable) sets $A, B, ...,$ with or without affixes, belong to $\mathfrak a$, and the functions $X, Y, \dots$ with or without affixes, are finite measurable functions.
 
-### Exercise 1
+### Exercise 1 
 
 The set $C$ of convergence of a sequence $X_{n}$ (to a finite or inlinite limit function) is measurable.
 $$
@@ -625,7 +652,7 @@ Since it is a inverse image of a Borel set $\{0\}$ in $\mathbb R$, $C$ is a meas
 
 A countably valued function $X=\sum x_j I_{A_j}$ where the sets $A_j$ are measurable is called an elementary measurable function or, simply, an *elementary function*; if the number of distinct values of $X$ is finite, then $X$ is also called a *simple function*.
 
-### Exercise 2
+### Exercise 2 
 
 If $\mu$ is finite, then given $X$, for every $\epsilon > 0$ there exists $A$ such that $\mu A<\epsilon$ and $X$ is bounded on $A^{c}.$ If $X$ is bounded, then there exists a sequence of simple functions which converges uniformly to $X.$ Combine both propositions.
 
@@ -635,13 +662,13 @@ We say that a sequence $X_n$ converges almost uniformly (a.u.) to $X$, and write
 
 For the first statement, since $\mu$ is finite, we have that $\mu(\emptyset) = 0$. If the statement is not true, then there exists $\epsilon_0 > 0$ such that there does not exist a set $A$ satisfying $\mu A < \epsilon_0$ and $X$ is bounded on $A^c$. (Notice that finite does not mean bounded, consider $f(x) = x$. ) 
 
-There are two possible situations, the first is that $\forall B \ne \emptyset, B \in \mathfrak a$, $\mu B \ge \epsilon_0$ or $\mu B = 0$. Since $\mu$ is finite, we can write $\mu \Omega = M < \infty$.  This means that the number of disjoint sets such that its measure is greater than $\epsilon_0$ is at most $\frac{M}{\epsilon_0}$, which is a finite number. For any one these set, say $C$, it is possible to claim that for each single element subset  $\{\omega\} \subset C$ is either $\mu$-null or with $\mu$-value no less than $\epsilon_0$. This further leads to the fact that there are at most $\frac{M}{\epsilon_0}$ single element set with $\mu$-value no less than $\epsilon_0$subsets. It is possible to find the maximum of $|X|$, say $x_0$, over these single elements and so on a set with $\mu$-value $M$, we have $|X| < x_0$, which means the statement is actually true. 
+There are two possible situations, the first is that $\forall B \ne \emptyset, B \in \mathfrak a$, $\mu B \ge \epsilon_0$ or $\mu B = 0$. Since $\mu$ is finite, we can write $\mu \Omega = M < \infty$.  This means that the number of disjoint sets such that its measure is greater than $\epsilon_0$ is at most $\frac{M}{\epsilon_0}$, which is a finite number. For any one these set, say $C$, it is possible to claim that for each single element subset  $\{\omega\} \subset C$ is either $\mu$-null or with $\mu$-value no less than $\epsilon_0$. This further leads to the fact that there are at most $\frac{M}{\epsilon_0}$ single element set with $\mu$-value no less than $\epsilon_0$subsets. It is possible to find the maximum of $|X|$, say $x_0$, over these finite number of single elements and so on a set with $\mu$-value $M$, we have $|X| < x_0$, which means the statement is actually true. 
 
 The second possible situation is the one that does not belong to the first. If the first statement is not true, then for any $x_0 > 0$, there exists $\epsilon_0$ such that $\mu(A_0 = \{\omega: |X(\omega)| \le x_0\}) <= M - \epsilon_0$. But this means that over a non-empty set $A_0$, for any $x_0 > 0$, $|X| > x_0$ which means $|X| = \infty$ and it is contradictory. Therefore, the first statement has to be true.
 
 For the second statement, this is proposition C'' of measurability theorem. Since $X$ is bounded, we can assume that $|X| < x_0$. On the other hand, since $X$ is a measurable function, the set $\{\omega:  \frac{k-1}{2^n} \le X(\omega) < \frac{k}{2^n}\}$ is measurable for any $n\in \mathbb N$ and $k \in \mathbb Z$(, and so the indicator function is measurable as well).  As a result, we can consider a sequence of simple function $\{X_n\}$ such that 
 $$
-X_n = \sum_{k = \lceil -x_02^n\rceil }^{\lceil x_0 2^n \rceil } \frac{k-1}{2^n} \mathbb I_{\{\frac{k-1}{2^n} \le X < \frac{k}{2^n}\}}.
+X_n = \sum_{k = \lceil -x_02^n\rceil }^{\lceil x_0 2^n \rceil } \frac{k-1}{2^n} \mathbb I_{\{\frac{k-1}{2^n} \le X < \frac{k}{2^n}\}}. 
 $$
 It is true that $|X_n - X| < \frac{1}{2^n}$ everywhere, which means that $X_n \xrightarrow{u} X$. 
 
@@ -790,7 +817,7 @@ Similarly, we can select $B_k$ and $n_k$ such that $\mu B_k<\frac{1}{2^{k+1}}$ a
 $$
 \mu\left(C_k\right) = \mu\left((A^c_k \cap B_k^c)^c\right) = \mu(A_k \cup B_k) < \frac{1}{2^k}
 $$
- 
+
 
 As a result, since $\mu$ is finite, we can use the a.e. criterion, $\forall \epsilon > 0, \delta > 0$, let $k = \left\lceil 1 - \log_2\left(\min\{\epsilon, \delta\}\right)\right\rceil$ + 1, then
 $$
@@ -810,7 +837,7 @@ If $\mu$ is $\sigma$-finite, we can prove the same conclusion on every $\mu$-fin
 
 ------
 
-### Exercise 9
+### Exercise 9 (Undone)
 
 Let $X_n \stackrel{\mu}{\rightarrow} X, Y_n \stackrel{\mu}{\rightarrow} Y$. Do $a X_n+b Y_n \stackrel{\mu}{\rightarrow} a X+b Y,\left|X_n\right| \stackrel{\mu}{\rightarrow}|X|, X_n{ }^2 \stackrel{\mu}{\rightarrow}$ $X^2, X_n Y_n \stackrel{\mu}{\rightarrow} X Y$ ? What about $1 / X_n$ ? Let $\mu$ be finite and let $g$ on $\mathbb R$ or on $\mathbb R \times \mathbb R$ be continuous. What about the sequences $g\left(X_n\right)$ and $g\left(X_n, Y_n\right)$ ?
 
@@ -820,7 +847,7 @@ This is, in some sense, a combination of Slutsky Thoerem and continuous mapping 
 
 ------
 
-### Exercise 10
+### Exercise 10 (Undone)
 
 Let the functions $X_n, X$ on the measure space be complex-valued or vector-valued or, more generally, let them take their values in some fixed Banach space. Denote the norm of $X$ by $|X|$, and denote $\left|X_n-X\right| \rightarrow 0$ by $X_n \rightarrow X$.
 
@@ -929,7 +956,7 @@ If only $\int X$ exists, based on the definition, how about $\int_{-\infty}^\inf
 
 ------
 
-### Exercise 13
+### Exercise 13 (Undone)
 
 Let $(T, \mathfrak T, \tau)$ be a measure space, to every point $t$ of which is assigned a measure $\mu_t$ on $\mathfrak a$. Let the function on $T$ defined by $\mu_t A$ for any fixed $A$ be $\mathfrak T$-measurable.
 
@@ -969,15 +996,67 @@ $$
 $$
 **Solution**
 
+This is closely related to the previous question. If $\varphi_n(A)\to 0$ uniformly, then
+$$
+\begin{aligned}
+ & \varphi^+(A) = \sup_{B\subset A} \varphi_n(A) \xrightarrow{\text u} 0,\quad \varphi^-(A) = -\inf_{B\subset A} \varphi_n(A)\xrightarrow{\text u} 0  \\
+ \implies & \bar\varphi_n(A) = \varphi_n^+(A) + \varphi_n^-(A) \xrightarrow{\text u} 0\\
+ \implies & \int _A |X_n| \xrightarrow{\text u} 0.
+ \end{aligned}
+$$
+The converse is obvious since  $|\int_A  X_n| \le \int_A |X_n| $. $\square$
 
+------
 
+### Exercise 16
 
+If finite $\int_A X_n \rightarrow \int_A X$ finite, uniformly in $A(\in \mathfrak a)$, then $\int_{\Omega}\left|X_n-X\right| \rightarrow 0$  ; and conversely.
 
+**Solution**
 
+This is related to the proof of dominated convergence theorem. By the given condition, uniformly in $A\in \mathfrak a$,
+$$
+\int_A (X_n - X) \xrightarrow{\text u } 0.
+$$
+This gives us the right to choose $A$ aribitrarily. And $\forall \epsilon > 0, A\in \mathfrak a$, $\exists N$ such that when $n > N$, 
+$$
+\left|\int_A (X_n - X)\right| < \frac{\epsilon}{2}
+$$
+Now for each $n$, let $A_{n_1} = [X_n \ge X], A_{n_2} = [X_n < X]$, then as long as $n > N$, we will have 
+$$
+\int_\Omega (X_n - X)^+ = \left|\int_{A_{n_1}} (X_n - X)\right|, \quad \int_\Omega (X_n - X)^- = \left|\int_{A_{n_1}} (X_n - X)\right|
+$$
+And so
+$$
+\int_\Omega |X_n - X| = \int_\Omega (X_n - X)^+ + \int_\Omega (X_n - X)^- < \epsilon
+$$
+which means $\int_{\Omega}\left|X_n-X\right| \rightarrow 0$.
 
+The converse is true since $\forall$ $A \in \mathfrak a$
+$$
+\left|\int_A (X_n - X)\right| \le \int_A |X_n- X| \le \int_{\Omega} |X_n - X| \to 0
+$$
+Therefore, $\forall \epsilon > 0$, $\exists N$ such that when $n > N$,
+$$
+0 \le \left|\int_A (X_n - X)\right| \le \int_A |X_n- X| \le \int_{\Omega} |X_n - X| < \epsilon.
+$$
+Since this applies to all $A$'s, we have uniform convergence here.
 
+### Exercise 17
 
+If $0 \leqq X_n \stackrel{\mu}{\rightarrow} X$, then finite $\int_{\Omega} X_n \rightarrow \int_{\Omega} X$ finite implies that $\int_A X_n \rightarrow$ $\int_A X$ uniformly in $A$ (also if $\stackrel{\mu}{\longrightarrow}$ is replaced by $\stackrel{\text { a.e. }}{\longrightarrow}$ )
+$\left(0 \leqq\left(X-X_n\right)^{+} \leqq X\right.$ integrable, and $\left.\int\left(X-X_n\right)^{+}-\int\left(X-X_n\right) \rightarrow 0.\right)$
 
+**Solution**
+
+According to the given hint, we know that 
+$$
+(X - X_n)^+ \xrightarrow{\mu} 0, \quad 0 \le (X - X_n)^+ \le |X|,
+$$
+where $|X|$ is integrable. By the dominated convergence theorem, we have that 
+$$
+\int\left(X-X_n\right)^{+}-\int\left(X-X_n\right) \rightarrow 0.
+$$
 
 
 
