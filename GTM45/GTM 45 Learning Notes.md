@@ -550,7 +550,7 @@ Since $\delta$ could be arbitrarily small, we must have $|\varphi_m(B) - \varphi
 
 By Baire's category theorem, there exists $k_0, d_0$ and $A_0 \in \mathcal X$ such that $\left[A \in \mathcal X ; d\left(A, A_0\right)<d_0\right] \subset A_{k_0}$. Why?  
 
-First of all, we know that $\mathcal X$ contains a sphere, which is in the form of $\widetilde{\mathcal X} = \left[A \in \mathcal X ; d\left(A, A_0\right) < d_0\right]$. Now, we need to show that there exists $k_0$ such that $\widetilde{\mathcal X} \subset A_{k_0}$. For any set $A \in \mathcal X$, given $\varphi_n \to \varphi$, we know that there exists some $\tilde k$ such that whenever $m, n > \tilde k$, 
+First of all, for any set $A \in \mathcal X$, given $\varphi_n \to \varphi$, we know that there exists some $\tilde k$ such that whenever $m, n > \tilde k$, 
 $$
 \left|\varphi_m\left(A\right) - \varphi_n\left(A\right)\right| < \frac{\epsilon}{3}.
 $$
@@ -558,11 +558,8 @@ Therefore, we have
 $$
 \mathcal X = \bigcup_{k=1}^\infty A_k
 $$
-As a result, we could select some $\widetilde{\mathcal X} \subsetneq \mathcal X =  \bigcup_{k=1}^\infty A_k$ by choosing the proper value of $d_0$, i.e., if for some $d$, $\mathcal X = \left[A \in \mathcal X ; d\left(A, A_0\right) < d\right]$ and for any $\tilde d  < d$, $\mathcal X \supset \left[A \in \mathcal X ; d\left(A, A_0\right) < \tilde d\right]$, then letting $d_0 = \frac{d}{2}$ will suffice.  $\widetilde{\mathcal X} \subsetneq \bigcup_{k=1}^\infty A_k$ means that there exists some $k_0$ such that $\widetilde{\mathcal X} \subsetneq \bigcup_{k=1}^{k_0} A_k$. By the definition of $A_k$ we know that $A_{k+1} \supset A_k$. Hence, 
+If there does not exists $k_0$, $d_0$ and $A_0 \in \mathcal X$ such that $\left[A \in \mathcal X ; d\left(A, A_0\right)\right]\subset A_{k_0}$, then for any $k$, $A_k$ contains no spheres. This means that $\mathcal X$ is a countable union of nowhere dense sets $A_k$'s and so $\mathcal X$ is of the first category. However, we have shown in exercise 17 that $\mathcal X$ is a complete metric space and so it should be of the second category. This contradiction tells us that there must exists  some  $k_0$, $d_0$ and $A_0 \in \mathcal X$ such that $\left[A \in \mathcal X ; d\left(A, A_0\right)\right]\subset A_{k_0}$.
 
-$$
-\widetilde{\mathcal X} \subsetneq \bigcup_{k=1}^{k_0} A_k = A_{k_0}.
-$$
 By $\mu$-continuity, $\exists \delta_0$ such that when $\mu A(\text{ or some }A_m) < \delta_0$, $|\varphi_n A| < \frac{\epsilon}{3}$ where $n \le k_0$ (finite $n$'s). This could always be done based on exercise 9, i.e., $\mu \to 0$ implies $\varphi_n \to 0$ because of finiteness. If $\mu A<\delta_0$, then 
 $$
 d\left(A_0-A, A_0\right) = \mu\left((A_0 - A)^c A_0 + (A_0 - A)A_0^c\right) = \mu(A_0\cap A) \le \mu(A) < \delta_0 < d_0,
@@ -1008,6 +1005,8 @@ The converse is obvious since  $|\int_A  X_n| \le \int_A |X_n| $. $\square$
 
 ------
 
+***Dominated convergence theorem**. If $\left|X_n\right| \leqq Y$ a.e. with $Y$ integrable and if $X_n \stackrel{\text { a.e. }}{\rightarrow} X$ or $X_n \stackrel{\mu}{\rightarrow} X$, then $\int X_n \rightarrow \int X$. In fact, $\int_A X_n-\int_A X \rightarrow 0$ uniformly in $A$ or, equivalently, $\int\left|X_n-X\right| \rightarrow 0$.*
+
 ### Exercise 16
 
 If finite $\int_A X_n \rightarrow \int_A X$ finite, uniformly in $A(\in \mathfrak a)$, then $\int_{\Omega}\left|X_n-X\right| \rightarrow 0$  ; and conversely.
@@ -1042,6 +1041,8 @@ $$
 $$
 Since this applies to all $A$'s, we have uniform convergence here.
 
+------
+
 ### Exercise 17
 
 If $0 \leqq X_n \stackrel{\mu}{\rightarrow} X$, then finite $\int_{\Omega} X_n \rightarrow \int_{\Omega} X$ finite implies that $\int_A X_n \rightarrow$ $\int_A X$ uniformly in $A$ (also if $\stackrel{\mu}{\longrightarrow}$ is replaced by $\stackrel{\text { a.e. }}{\longrightarrow}$ )
@@ -1049,14 +1050,26 @@ $\left(0 \leqq\left(X-X_n\right)^{+} \leqq X\right.$ integrable, and $\left.\int
 
 **Solution**
 
-According to the given hint, we know that 
+According to exercise 16, if we could show that 
 $$
-(X - X_n)^+ \xrightarrow{\mu} 0, \quad 0 \le (X - X_n)^+ \le |X|,
+\int_{\Omega} |X_n - X| \to 0,
 $$
-where $|X|$ is integrable. By the dominated convergence theorem, we have that 
-$$
-\int\left(X-X_n\right)^{+}-\int\left(X-X_n\right) \rightarrow 0.
-$$
+then the uniform convergence is true. 
 
-
-
+Then it is equivalent to show that 
+$$
+\int_{\Omega} (X - X_n)^+ + \int (X - X_n)^- \to 0.
+$$
+Because $(X - X_n)^+ \le |X - X_n|$, by the definition of convergence in measure, $X_n \xrightarrow{\mu} X$ implies $(X_n - X)^+ \xrightarrow{\mu} 0$. Since $0 \le (X - X_n)^+ \le X$ integrable, by the dominated convergence theorem, 
+$$
+\int_{\Omega} |X - X_n^+| = \int_{\Omega} (X - X_n)^+ \to 0
+$$
+For the same reason, 
+$$
+\int_{\Omega} (X - X_n)^- \to 0
+$$
+As a result, 
+$$
+\int_{\Omega} |X_n - X| \to 0,
+$$
+and so by exercise 16, we know that $\int_A X_n \rightarrow$ $\int_A X$ uniformly in $A$. Changing $\mu$ to $a.e.$ will not affect our application of dominated convergence theorem here so the conclusion still holds. $\square$
