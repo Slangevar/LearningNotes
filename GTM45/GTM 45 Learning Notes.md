@@ -72,11 +72,11 @@ Based on Jordan-Hahn decomposition theorem, we could always find a $D\in \mathfr
 
 Now if $\varphi^-(A) \le \varphi^+(A)$, we let $B = AD^c$. Then we know that $\varphi^+(B) = \varphi^+(A)$ since $AD^c\cap D^c = AD^c$. On the other hand, we have $\varphi^-(B) = -\varphi(AD^c\cap D) = -\varphi(\empty) = 0$. Therefore, 
 $$
-2|\varphi(B)| = 2|\psi^+(B) - \psi^-(B)| = 2\psi^+(B) = 2\psi^+(A)
+2|\varphi(B)| = 2|\varphi^+(B) - \varphi^-(B)| = 2\varphi^+(B) = 2\varphi^+(A)
 $$
 On the other hand,
 $$
-\bar \varphi(A) = \psi^+(A) + \psi^-(A) \le 2 \psi^+(A)
+\bar \varphi(A) = \varphi^+(A) + \varphi^-(A) \le 2 \varphi^+(A)
 $$
 So $B$ satisfies the result. 
 
@@ -270,7 +270,7 @@ We may show that $\varphi$ could take any value between $-\varphi^-$ and $\varph
 
 ------
 
-### Exercise 8 (Check)
+### Exercise 8 
 
 If $\varphi$ is finitely additive, $\mu$ is finite, and $\mu A_n \rightarrow 0$ implies $\varphi A_n \rightarrow 0$, then $\varphi$ is $\sigma$-additive. *We say that $\varphi$ is $\varphi_0$-continuous if $\varphi_0 A=0$ implies $\varphi A=0$*.
 
@@ -405,7 +405,7 @@ Therefore, $\forall \epsilon > 0, A\in \mathfrak a$,
 $$
 \varphi^+(A) < \lim\inf\varphi_n^+(A) + \epsilon \implies \varphi^+ \le \lim\inf \varphi^+_n.
 $$
-Same techniques apply for $\varphi^-$.
+Same techniques apply to $\varphi^-$.
 
 If $\varphi_n\uparrow$, we know that $\varphi \ge \varphi_n$ and so
 $$
@@ -530,7 +530,7 @@ We say that the $\varphi_n$ are uniformly $\mu$-continuous if $\mu A_m \rightarr
 
 ***Baire's category theorem** Every complete metric space is of the second category.*
 
-### Exercise 18 (Discussion)
+### Exercise 18 
 
 Let $\mu$ be $\sigma$-finite. If the finite $\varphi_n$ are $\mu$-continuous and $\lim \varphi_n$ exists and is finite, then the $\varphi_n$ are uniformly $\mu$-continuous and $\lim \varphi_n=\varphi$ is $\mu$-continuous and $\sigma$-additive. 
 
@@ -542,7 +542,7 @@ Why is every $A_k$ closed?
 
 Consider a sequence $\{B_{j}: B_j\in A, d(B_{j_1}, B_{j_2}) \to 0 \text{ as } j_1, j_2 \to \infty\}$. This is a mutually convergence sequence in $A_k$. We know from Exercise 17 that this sequence has a limit in $\mathcal X$, namely $B$ and $d(B_j, B) \to 0$ as $j \to \infty$. Now we need to show that $B\in A_k$, i.e., $\forall m, n \ge k$, $|\varphi_m(B) - \varphi_n(B)| \le \frac{\epsilon}{3}$. 
 
-$\forall \delta > 0$, based on the $\mu$-continuity, since $\varphi_n$'s are finite, based on exercise 9, $\exists J$ such that if $j > J$, then for given $m, n > k$,  $|\varphi_m(B_j) - \varphi_m(B)| < \frac{\delta}{2}$ and $|\varphi_n(B_j) - \varphi_n(B)|  < \frac{\delta}{2}$. This is because the symmetric difference goes to $\emptyset$ and $\varphi_m$ as well as $\varphi_n$ are finite and $\sigma$-additive (so that we will have continuity at $\emptyset$).  Therefore, 
+$\forall \delta > 0$, based on the $\mu$-continuity, since $\varphi_n$'s are finite, based on exercise 9, $\exists J$ such that if $j > J$, then for given $m, n > k$,  $|\varphi_m(B_j) - \varphi_m(B)|= |\varphi_m(B_jB^c) + \varphi_m(BB_j^c)| < \frac{\delta}{2}$ and $|\varphi_n(B_j) - \varphi_n(B)|  < \frac{\delta}{2}$. This is because the symmetric difference goes to $\emptyset$ and $\varphi_m$ as well as $\varphi_n$ are finite and $\sigma$-additive (so that we will have continuity at $\emptyset$).  Therefore, 
 $$
 |\varphi_m(B) - \varphi_n(B)| \le |\varphi_m(B_j) - \varphi_m(B)| + |\varphi_m(B_j) - \varphi_n(B_j)| + |\varphi_n(B_j) - \varphi_n(B)| = \frac{\epsilon}{3} + \delta.
 $$
@@ -569,44 +569,19 @@ $$
 d\left(A_0 \cup A, A_0\right) = \mu((A_0\cup A)^c A_0 + (A_0\cup A)A_0^c) = \mu(A - A_0) < \mu(A) < \delta_0 < d_0.
 $$
 
-This means that $A_0 - A$ and $A_0 \cup A$ are elements in $A_{k_0}$.
-
-And so, 
+This means that $A_0 - A$ and $A_0 \cup A$ are elements in $A_{k_0}$. Which means that when $n > k_0$, 
+$$
+\left|\varphi_n\left(A_0 \cup A\right)-\varphi_{k_0}\left(A_0 \cup A\right)\right|\le \frac{\epsilon}{3}, \quad \left|\varphi_n\left(A_0-A\right)-\varphi_{k_0}\left(A_0-A\right)\right| \le \frac{\epsilon}{3}
+$$
+Since $|\varphi_n A| < \frac{\epsilon}{3}$ is certain when $n \le k_0$, we only need to consider the case when $n > k_0$. When $n> k_0$, by the definition of $A_{k_0}$,
 $$
 \begin{aligned}
-\left|\varphi_n A\right| & = \left|\varphi_{k_0} A + \varphi_n A - \varphi_{k_0} A \right|\\
-& \le |\varphi_{k_0} A + \varphi_n (A_0 \cup A - (A_0 - A)) - \varphi_{k_0} (A_0 \cup A - (A_0 - A))|\\
-& \le\left|\varphi_{k_0} A\right|+\underbrace{\left|\varphi_n\left(A_0 \cup A\right)-\varphi_{k_0}\left(A_0 \cup A\right)\right|+\left|\varphi_n\left(A_0-A\right)-\varphi_{k_0}\left(A_0-A\right)\right|}_{C_0} \\
-
+\left|\varphi_n A\right| & \le 
+|\varphi_{k_0}A| + \left|\varphi_n\left(A_0 \cup A\right)-\varphi_{k_0}\left(A_0 \cup A\right)\right|+\left|\varphi_n\left(A_0-A\right)-\varphi_{k_0}\left(A_0-A\right)\right| \\
+& < \frac{\epsilon}{3} + \frac{\epsilon}{3} + \frac{\epsilon}{3} = \epsilon
 \end{aligned}
 $$
-
-As we know, since $|\varphi_n A| < \frac{\epsilon}{3}$, we must have $C_0 < \frac{\epsilon}{3}$ otherwise we will have negative $|\varphi_{k_0} A|$.
-
-On the other hand 
-$$
-\begin{aligned}
-|\varphi_{k_0} A| &= |\varphi_n A + \varphi_{k_0}A - \varphi_n A| \\
-& \le\left|\varphi_{n} A\right|+\left|\varphi_n\left(A_0 \cup A\right)-\varphi_{k_0}\left(A_0 \cup A\right)\right|+\left|\varphi_n\left(A_0-A\right)-\varphi_{k_0}\left(A_0-A\right)\right| \\
-& \le \epsilon + C_0 \le \frac{2\epsilon}{3}
-\end{aligned}
-$$
-Eventually, $t > k_0$, since $A_0 - A$ and $A_0 \cup A$ are elements in $A_{k_0}$,
-$$
-\begin{aligned}
-\left|\varphi_n\left(A_0 \cup A\right)-\varphi_{t}\left(A_0 \cup A\right)\right| & \le \left|\varphi_t\left(A_0 \cup A\right)-\varphi_{k_0}\left(A_0 \cup A\right)\right| + \left|\varphi_n\left(A_0 \cup A\right)-\varphi_{k_0}\left(A_0 \cup A\right)\right| \\
-& \le \left|\varphi_n\left(A_0 \cup A\right)-\varphi_{k_0}\left(A_0 \cup A\right)\right| + \frac{\epsilon}{3}
-\end{aligned}
-$$
-Similarly, we will have 
-$$
-\left|\varphi_n\left(A_0-A\right)-\varphi_{t}\left(A_0-A\right)\right|  \le \left|\varphi_n\left(A_0-A\right)-\varphi_{k_0}\left(A_0-A\right)\right| + \frac{\epsilon}{3}
-$$
-As a result, 
-$$
-|\varphi_t A| \le |\varphi_n A|+ C_0 + \frac{\epsilon}{3} \le \frac{4}{3}\epsilon
-$$
-Hence, as long as $\mu A < \delta_0$ we will have $\forall n > 0$, $\varphi_n A \le \frac{4}{3}\epsilon $. This means uniform $\mu$-continuity. The definition of $A_{k_0}$ guarantees that $|\varphi A| \le \frac{4}{3}\epsilon$ as well because the argument would be the same as that for $\varphi_t$ based on the fact that taking the limit will preserve the inequality condition for $A_{k_0}$. As a result, we prove for the $\mu$-continuity for $\varphi$ as well.
+Hence, as long as $\mu A < \delta_0$ we will have $\forall n > 0$, $|\varphi_n A| < \epsilon $. This means uniform $\mu$-continuity. The definition of $A_{k_0}$ guarantees that $|\varphi A| \le \epsilon$ as well because the argument would be the same as that for $\varphi_{n}$ based on the fact that taking the limit will preserve the inequality condition for $A_{k_0}$. As a result, we prove for the $\mu$-continuity for $\varphi$ as well.
 
 By exercise 8, we know that if $\mu$ is finite, $\varphi$ being $\mu$-continuous and finitely additive, then $\varphi$ is $\sigma$-additive. The finite addtivity is obvious since the limit of the finite sum is the finite sum of the limit. On the other hand, in this exercise, we know that $\mu$ is $\sigma$-finite, which means that if we ignore trivialities, there is at least one finite value for $\mu$. This means that $\mu(\emptyset) = 0$. Based on the continuity of $\sigma$-additive function, i.e., $\mu(\lim A_n) = \lim \mu(A_n)$, and using the same argument of exercise 8, we can claim that $\varphi$ is $\sigma$-additive. Here we don't have the special case in exercise 9 since $\varphi$ is guaranteed to be finite.
 
@@ -625,6 +600,23 @@ If $\left|\varphi_n\right| \le c_n$, set $\mu A=\sum \frac{1}{2^n c_n}\left|\var
 ## Chapter 2 Exercise
 
 **Notation.** Unless otherwise stated, the measure space $(\Omega,\mathfrak a, \mu)$ is fixed, the (measurable) sets $A, B, ...,$ with or without affixes, belong to $\mathfrak a$, and the functions $X, Y, \dots$ with or without affixes, are finite measurable functions.
+
+*In the proof of Measurability Theorem, we have that* 
+
+*The constructive and descriptive definitions are equivalent, and the class of measurable functions is closed under the usual operations of analysis.*
+
+*Let $X_n$ be functions measurable (D), that is, measurable according to (D) or, equivalently, $\left(D^{\prime}\right)$. Then all sets*
+$$
+\left[\text { inf } X_n<x\right]=\bigcup\left[X_n<x\right], \quad\left[-X_n<x\right]=\left[X_n>-x\right]
+$$
+*are measurable and, hence, the functions*
+$$
+\begin{aligned}
+\sup X_n= & -\inf \left(-X_n\right), \lim \inf X_n=\sup _n\left(\inf _{k \geqq n} X_k\right), \\
+& \lim \sup X_n=-\liminf \left(-X_n\right)
+\end{aligned}
+$$
+*are measurable (D).*
 
 ### Exercise 1 
 
@@ -657,11 +649,11 @@ We say that a sequence $X_n$ converges almost uniformly (a.u.) to $X$, and write
 
 **Solution**
 
-For the first statement, since $\mu$ is finite, we have that $\mu(\emptyset) = 0$. If the statement is not true, then there exists $\epsilon_0 > 0$ such that there does not exist a set $A$ satisfying $\mu A < \epsilon_0$ and $X$ is bounded on $A^c$. (Notice that finite does not mean bounded, consider $f(x) = x$. ) 
+For the first statement, since $\mu$ is finite, we have that $\mu(\emptyset) = 0$. If the statement is not true, then there exists $\epsilon_0 > 0$ such that there does not exist a set $A$ satisfying $\mu A < \epsilon_0$ and $X$ is bounded on $A^c$. (Notice that finiteness does not mean boundedness, consider $f(x) = x$. ) 
 
-There are two possible situations, the first is that $\forall B \ne \emptyset, B \in \mathfrak a$, $\mu B \ge \epsilon_0$ or $\mu B = 0$. Since $\mu$ is finite, we can write $\mu \Omega = M < \infty$.  This means that the number of disjoint sets such that its measure is greater than $\epsilon_0$ is at most $\frac{M}{\epsilon_0}$, which is a finite number. For any one these set, say $C$, it is possible to claim that for each single element subset  $\{\omega\} \subset C$ is either $\mu$-null or with $\mu$-value no less than $\epsilon_0$. This further leads to the fact that there are at most $\frac{M}{\epsilon_0}$ single element set with $\mu$-value no less than $\epsilon_0$subsets. It is possible to find the maximum of $|X|$, say $x_0$, over these finite number of single elements and so on a set with $\mu$-value $M$, we have $|X| < x_0$, which means the statement is actually true. 
+There are two possible situations, the first is that $\forall B \ne \emptyset, B \in \mathfrak a$, $\mu B \ge \epsilon_0$ or $\mu B = 0$. Since $\mu$ is finite, we can write $\mu \Omega = M < \infty$.  This means that the number of disjoint sets such that its measure is greater than $\epsilon_0$ is at most $\frac{M}{\epsilon_0}$, which is a finite number. For any one these set, say $C$, it is possible to claim that for each single element subset  $\{\omega\} \subset C$ is either $\mu$-null or with $\mu$-value no less than $\epsilon_0$. This further leads to the fact that there are at most $\frac{M}{\epsilon_0}$ single element set with $\mu$-value no less than $\epsilon_0$ subsets. It is possible to find the maximum of $|X|$, say $x_0$, over these finite number of single elements and so on a set with $\mu$-value $M$, we have $|X| < x_0$, which means the statement is actually true. 
 
-The second possible situation is the one that does not belong to the first. If the first statement is not true, then for any $x_0 > 0$, there exists $\epsilon_0$ such that $\mu(A_0 = \{\omega: |X(\omega)| \le x_0\}) <= M - \epsilon_0$. But this means that over a non-empty set $A_0$, for any $x_0 > 0$, $|X| > x_0$ which means $|X| = \infty$ and it is contradictory. Therefore, the first statement has to be true.
+The second possible situation is the one that does not belong to the first. If the first statement is not true, then there exists $\epsilon_0$ such that for any $x_0 > 0$, $\mu(A_0 = \{\omega: |X(\omega)| \le x_0\}) <= M - \epsilon_0$. But this means that over a non-empty set $A_0^c$ with measure at least $\epsilon_0$, for any $x_0 > 0$, $|X| > x_0$ which means $|X| = \infty$, and it is contradictory. Therefore, the first statement has to be true.
 
 For the second statement, this is proposition C'' of measurability theorem. Since $X$ is bounded, we can assume that $|X| < x_0$. On the other hand, since $X$ is a measurable function, the set $\{\omega:  \frac{k-1}{2^n} \le X(\omega) < \frac{k}{2^n}\}$ is measurable for any $n\in \mathbb N$ and $k \in \mathbb Z$(, and so the indicator function is measurable as well).  As a result, we can consider a sequence of simple function $\{X_n\}$ such that 
 $$
@@ -928,7 +920,7 @@ So failing to converge a.e. is obvious. $\square$
 
 ------
 
-### Exercise 12
+### Exercise 12 (Discussion)
 
 If $X$ is integrable, then the set $[X \neq 0]$ is of $\sigma$-finite measure. What if $\int X$ exists? ($\mu[|X| \geqq c] \leqq \frac{1}{c} \int|X|$)
 
@@ -937,7 +929,7 @@ If $X$ is integrable, then the set $[X \neq 0]$ is of $\sigma$-finite measure. W
 If $X$ is integrable, then $\int |X|$ is finite. Based on the hint, $\forall c \in \mathbb Z_+$, 
 $$
 \begin{aligned}
-	\mu\left[|X| > c \right] 
+	\mu\left[|X| \ge c \right] 
 	& = \int \mathbb I_{\{|X| \ge c\}} d\mu \\ 
 	& \le \frac{1}{c}\left[\int c \mathbb I_{\{|X| \ge c\}} d\mu + \int |X| I_{\{|X| < c\}} d\mu\right] \\
 	& \le \frac{1}{c}\int |X| d\mu = \frac{1}{c}\int |X| < \infty.
@@ -949,7 +941,7 @@ $$
 $$
 we know that $[X \ne 0]$ is of $\sigma$-finite measure.
 
-If only $\int X$ exists, based on the definition, how about $\int_{-\infty}^\infty x  dx$ ? We cannot have $\sigma$-finiteness. $\square$
+If only $\int X$ exists, then we cannot say something like the previous part. But by the definition of the integral introduced in the book, $\int X$ is just the difference of limit of the sequence of integrals of simple functions (each one of which is just a finite sum of the product of the indicator function of a set and the measure of that set). The limit of a sequence of finite sums should by definition be $\sigma$-finite and so the difference is also $\sigma$-finite. $\square$
 
 ------
 
@@ -996,7 +988,7 @@ $$
 This is closely related to the previous question. If $\varphi_n(A)\to 0$ uniformly, then
 $$
 \begin{aligned}
- & \varphi^+(A) = \sup_{B\subset A} \varphi_n(A) \xrightarrow{\text u} 0,\quad \varphi^-(A) = -\inf_{B\subset A} \varphi_n(A)\xrightarrow{\text u} 0  \\
+ & \varphi_n^+(A) = \sup_{B\subset A} \varphi_n(A) \xrightarrow{\text u} 0,\quad \varphi_n^-(A) = -\inf_{B\subset A} \varphi_n(A)\xrightarrow{\text u} 0  \\
  \implies & \bar\varphi_n(A) = \varphi_n^+(A) + \varphi_n^-(A) \xrightarrow{\text u} 0\\
  \implies & \int _A |X_n| \xrightarrow{\text u} 0.
  \end{aligned}
@@ -1073,3 +1065,64 @@ $$
 \int_{\Omega} |X_n - X| \to 0,
 $$
 and so by exercise 16, we know that $\int_A X_n \rightarrow$ $\int_A X$ uniformly in $A$. Changing $\mu$ to $a.e.$ will not affect our application of dominated convergence theorem here so the conclusion still holds. $\square$
+
+------
+
+### Exercise 18 (Undone)
+
+Rewrite in terms of integrals as many as possible of the complements and details of Chapter I.
+
+------
+
+***RADON-NIKODYM THEOREM** If, on $\mathfrak a$, the measure $\mu$ and the $\sigma$-additive set function $\varphi$ are $\sigma$-finite and $\varphi$ is $\mu$-continuous, then $\varphi$ is the indefinite integral of a finite function determined up to an equivalence.*
+
+### Exercise 19 (Discussion)
+
+If the $X_n$ are integrable and $\lim \int_A X_n$ exists and is finite for every $A$, then the $\int\left|X_n\right|$ are uniformly bounded, $\int_A\left|X_n\right| \rightarrow 0$ uniformly in $n$ as $\mu A \rightarrow 0$ and as $A \downarrow \emptyset$, and there exists an integrable $X$, determined up to an equivalence, such that $\int_A X_n \rightarrow \int_A X$ for every $A$. (Use 18.)
+
+**Solution**
+
+Is it about uniformly integrability?
+
+Using the conclusion of 14, we can define $\varphi_n(A) = \int_A X_n$. With the condition $\mu A \to 0$ and $A \downarrow \empty$,  we have that $\varphi_n \to 0$. Conditioned on $A\downarrow 0$, $\varphi_n A \to 0$ as $\mu A \to 0$. Otherwise, we could have $\varphi_n$ has the same property as Dirac measure while $\mu$ be a lebesgue measure, i.e, $\varphi_n$ has some postive value over a set consisting of a single point? Then, with the same logic for exercise 18 of chapter 1, we know that $\varphi_n A \to 0$ uniformly as $\mu A \to 0$ and $A \downarrow \emptyset$  and $\varphi = \lim \varphi_n$ is $\mu$-continuous and $\sigma$-additive.
+
+The fact that $\varphi_n A \to 0$ uniformly as $\mu A \to 0$ and $A \downarrow \emptyset$, plus the conclusion in exercise 15 implies that $\int_A\left|X_n\right| \rightarrow 0$ uniformly in $n$ as $\mu A \rightarrow 0$ and as $A \downarrow \emptyset$ (since $\varphi_n$'s are all finite, then by exercise 9 of chapter 1 it is true).  The $\mu$-continuity and the $\sigma$-additivity of $\varphi$, along with the Radon-Nikodym theorem tells us that $\varphi$ is an indefinite integral of some $X$ up to an equivalence and 
+$$
+\varphi_n \to \varphi \implies \text{ for every A, } \int_A X_n \to \int_A X.
+$$
+The only thing that remains to prove is that $\int |X_n|$ are uniformly bounded. Let us continue to use the notation of $\varphi_n = \int X_n$ and $\varphi = \int X$. 
+
+### Exercise 20 (Discussion)
+
+If integrable $X_n \rightarrow X$ integrable, then existence and finiteness of $\lim \int_A X_n$ for every $A$ are equivalent to the following properties:
+
+(1)	$\int_A X_n \rightarrow \int_A X$ uniformly in $A$.
+
+(2)	$\int_A X_n \rightarrow 0$ uniformly in $n$ as $\mu A \rightarrow 0$ and as $A \downarrow \emptyset$.
+
+If $\mu$ is finite, then "as $A \downarrow \emptyset$ " can be suppressed. (Use the preceding propositions and the relations
+$$
+\begin{gathered}\int_A\left|X_n\right| \leqq \int_A\left|X_n-X\right|+\int_A|X|, \\ \int_A\left|X_n-X\right| \leqq \epsilon+\int_{A\left[\left|X_n-X\right| \geqq \epsilon\right]}\left(\left|X_n\right|+|X|\right)\end{gathered}
+$$
+)
+
+**Solution**
+
+If $X_n \to X$, then there for some fixed $\epsilon > 0$, $\omega\in \Omega$, there exists $N_{\epsilon, \omega} > 0$ such that when $n > N_{\epsilon, \omega}$,  $|X_n(\omega) - X(\omega)| < \epsilon$. Therefore taking 
+$$
+Y(\omega) = \max\{|X_1|, \dots, |X_{N_{\epsilon, \omega}}|, |X|+\epsilon\}
+$$
+we will have that $|X_n| \le Y$ for all $n$ (and all $\omega$). Since $X$ and $X_n$'s are integrable, $Y$ is also integrable. Then by dominated convergence theorem, $\int_A X_n \rightarrow \int_A X$ uniformly in $A$. By exercise 19, $\int_A X_n \rightarrow 0$ uniformly in $n$ as $\mu A \rightarrow 0$ and as $A \downarrow \emptyset$.
+
+For the last statement, if $\mu$ is finite, then without loss of generality, we can assume $\mu A \le 1$. By the hint, for any $\epsilon > 0$,
+$$
+\begin{aligned}
+\int_A |X_n| 
+& \le \int_A |X_n - X| + \int_A |X| \\
+& \le \epsilon  + \int_{A\cap\{|X_n - X|\ge \epsilon\}} (|X_n| + |X|) + \int_A |X| \\
+\end{aligned}
+$$
+Since $\mu$ is finite, by comparison of convergence theorem, we know that $X_n \to X$ implies $X_n \xrightarrow{\mu} X$. 
+
+------
+
