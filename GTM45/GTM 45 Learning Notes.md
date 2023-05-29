@@ -276,7 +276,7 @@ If $\varphi$ is finitely additive, $\mu$ is finite, and $\mu A_n \rightarrow 0$ 
 
 **Solution**
 
-Consider a sequence of sets $A_n \uparrow A$ for some $A$ as $n\to \infty$.  we know that $B_i = A - A_i \to \empty$  as $n\to \infty$. Since $\varphi$ is finitely addtive, for any $n$ we have 
+Consider a sequence of disjoint sets $B_i$ and define $A_n = \sum_{i=1}^n B_i$ and $A = \sum_{i=1}^\infty B_i$. Clearly $A_n \uparrow A$ for some $A$ as $n\to \infty$.  Since $\varphi$ is finitely addtive, for any $n$ we have 
 $$
 \varphi\left(\sum_{i=1}^n B_i \right) = \sum_{i=1}^n \varphi(B_i)
 $$
@@ -1090,7 +1090,7 @@ The fact that $\varphi_n A \to 0$ uniformly as $\mu A \to 0$ and $A \downarrow \
 $$
 \varphi_n \to \varphi \implies \text{ for every A, } \int_A X_n \to \int_A X.
 $$
-The only thing that remains to prove is that $\int |X_n|$ are uniformly bounded. Let us continue to use the notation of $\varphi_n = \int X_n$ and $\varphi = \int X$. 
+The only thing that remains to prove is that $\int |X_n|$ are uniformly bounded. 
 
 ### Exercise 20 (Discussion)
 
@@ -1110,7 +1110,7 @@ $$
 
 If $X_n \to X$, then there for some fixed $\epsilon > 0$, $\omega\in \Omega$, there exists $N_{\epsilon, \omega} > 0$ such that when $n > N_{\epsilon, \omega}$,  $|X_n(\omega) - X(\omega)| < \epsilon$. Therefore taking 
 $$
-Y(\omega) = \max\{|X_1|, \dots, |X_{N_{\epsilon, \omega}}|, |X|+\epsilon\}
+Y(\omega) = \max\{|X_1(\omega)|, \dots, |X_{N_{\epsilon, \omega}}(\omega)|, |X(\omega)|+\epsilon\}
 $$
 we will have that $|X_n| \le Y$ for all $n$ (and all $\omega$). Since $X$ and $X_n$'s are integrable, $Y$ is also integrable. Then by dominated convergence theorem, $\int_A X_n \rightarrow \int_A X$ uniformly in $A$. By exercise 19, $\int_A X_n \rightarrow 0$ uniformly in $n$ as $\mu A \rightarrow 0$ and as $A \downarrow \emptyset$.
 
