@@ -1,0 +1,165 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{exercise-19}{%
+  \subsubsection{\texorpdfstring{Exercise 19
+    }{Exercise 19 }}\label{exercise-19}}
+
+If the \(X_n\) are integrable and \(\lim \int_A X_n\) exists and is
+finite for every \(A\), then the \(\int\left|X_n\right|\) are uniformly
+bounded, \(\int_A\left|X_n\right| \rightarrow 0\) uniformly in \(n\) as
+\(\mu A \rightarrow 0\) and as \(A \downarrow \emptyset\), and there
+exists an integrable \(X\), determined up to an equivalence, such that
+\(\int_A X_n \rightarrow \int_A X\) for every \(A\). (Use 18.)
+
+\textbf{Solution}
+
+Is it about uniformly integrability?
+
+Using the conclusion of 14, we can define \(\varphi_n(A) = \int_A X_n\).
+With the condition \(\mu A \to 0\) and \(A \downarrow \empty\), we have
+that \(\varphi_n \to 0\). Conditioned on \(A\downarrow 0\),
+\(\varphi_n A \to 0\) as \(\mu A \to 0\). Then, with the same logic for
+exercise 18 of chapter 1, we know that \(\varphi_n A \to 0\) uniformly
+as \(\mu A \to 0\) and \(A \downarrow \emptyset\) and
+\(\varphi = \lim \varphi_n\) is \(\mu\)-continuous and
+\(\sigma\)-additive.
+
+The question here is why we need \(A\downarrow\emptyset\). Maybe because
+we try to avoid things like Dirac function? But in the next question, it
+seems that this condition could be suppressed when \(\mu\) is finite.
+
+The fact that \(\varphi_n A \to 0\) uniformly as \(\mu A \to 0\) and
+\(A \downarrow \emptyset\), plus the conclusion in exercise 15 implies
+that \(\int_A\left|X_n\right| \rightarrow 0\) uniformly in \(n\) as
+\(\mu A \rightarrow 0\) and as \(A \downarrow \emptyset\) (since
+\(\varphi_n\)\textquotesingle s are all finite, then by exercise 9 of
+chapter 1 it is true). The \(\mu\)-continuity and the
+\(\sigma\)-additivity of \(\varphi\), along with the Radon-Nikodym
+theorem tells us that \(\varphi\) is an indefinite integral of some
+\(X\) up to an equivalence and
+
+\[\varphi_n \to \varphi \implies \text{ for every A, } \int_A X_n \to \int_A X.\]
+
+The only thing that remains to prove is that \(\int |X_n|\) are
+uniformly bounded.
+
+We can show that based on the given condition,
+\(X_n \xrightarrow{\text{a.e.}} X\). If not, then we know that
+
+\[\mu[X_n \not\to X] \ne 0\]
+
+Therefore, we know that there is a set, say, \(A_0\) with
+\(\mu A_0 = \delta_0 > 0\) such that \(X_n \not\to X\) on \(A_0\). This
+means that there exists some \(\epsilon_0 > 0\), and for any \(N_0 > 0\)
+there exists some \(n > N_0\) such that on \(A_0\)
+
+\[|X_n - X| \ge \epsilon_0\]
+
+If it is possible, then we could then find a infinite subsequence
+\(X_{nj}, j = 1, 2, \dots\) such that \(|X_{nj} - X| \ge \epsilon_0\) on
+\(A_0\) but \(\int_{B} X_{nj} \to \int_{B} X\) for all
+\(B \subset A_0\). We need to argue then it is impossible.
+
+Consider the subsequence of \(X_{nj}\), say \(X_{njk}\) where we have
+\(\mu[X_{njk} - X \ge \epsilon_0] \ge \frac{\delta}{2}\). Without loss
+of generality, assume this subsubsequence is infinite. Notice that we
+still have \(\int_{B} X_{njk} \to \int_B X\) for all \(B\subset A_0\).
+There must exists some \(B_{0}\subset A_0\) with
+\(\mu B_0 \ge \frac{\delta}{2}\) such that on \(B_0\), there are
+infinitely many \(X_{njk}\)\textquotesingle s such taht
+\(X_{njk} - X \ge \epsilon_0\). Otherwise, there would exists a
+\(B_1 \subset A_1\) such that there exists \(K_1\) such that when
+\(k > K_1\), \(X_{njk} - X < \epsilon_0\) on \(B_1\). But this means
+that for all \(k > K_1\), \(X_{njk} - X < \epsilon_0\) on \(A_0 - B_1\)
+where \(\mu(A_0 - B_1) < \frac{\delta}{2}\) which is contradictory.
+
+Now we obtain \(B_0\) with \(\mu B_0 \ge \frac{\delta}{2}\) and
+\(X_{njk} - X \ge \epsilon_0\) on \(B_0\). This means that for any
+\(K_2 > 0\), there exists some \(k > K_2\) such that,
+
+\[\int_{B_0} (X_{njk} - X) d\mu \ge \frac{\delta\epsilon_0}{2}.\]
+
+However, the given condition tells us that for
+\(\frac{\delta\epsilon_0}{2} > 0\), there exists an \(K\) such that when
+\(k > K\),
+
+\[\int_{B_0} X_n - X < \frac{\delta \epsilon_0}{2}.\]
+
+We have found a contradiction. This means that we cannot have
+subsubsequence to be infinite. Then the subsubsequence for
+\(\mu[X_{njk} - X < -\epsilon_0] \ge \frac{\delta}{2}\) cannot be
+infinite for the same reason. Then the subsequence of \(X_{nj}\) cannot
+be infinite. And so the whole assumption that \(X_n \not\to X\) on
+\(A_0\) is invalid. In summary, we must have
+
+\[X_n \xrightarrow{\text{a.e.}} X.\]
+
+With a similar argument in exercise 17, we could use dominated
+convergence theorem to control \((X - X_n)^+\) and \((X - X_n)^-\) by
+\(|X|\) integrable to get
+
+\[I_n := \int_{\Omega} |X_n - X| \to 0.\]
+
+which means that there exists some \(N_1\) such that when \(n > N_1\),
+
+\[I_n < \int |X|\]
+
+Denote \(M = \max\{I_1, I_2, \dots, I_{N_1}, \int |X|\}\). Then
+
+\[\int |X_n| \le \int |X_n - X| + \int |X| \le 2M,\]
+
+which means that \(\int |X_n|\) uniformly bounded.
+
+\end{document}

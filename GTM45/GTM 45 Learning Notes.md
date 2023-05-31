@@ -320,7 +320,7 @@ If $\mu$ is replaced by a signed measure $\varphi_0$. Then we consider the same 
 
 ------
 
-### Exercise 10 (Check)
+### Exercise 10 
 
 If the $\mu_j$ are finite measures, then there exists a $\mu$ such that all the $\mu_j$ are $\mu$-continuous. (Take $\mu=\sum \mu_j / 2^j \mu_j \Omega$.) What about $\mu_j$ 's replaced by $\varphi_j$ 's?
 
@@ -941,7 +941,7 @@ $$
 $$
 we know that $[X \ne 0]$ is of $\sigma$-finite measure.
 
-If only $\int X$ exists, then we cannot say something like the previous part. But by the definition of the integral introduced in the book, $\int X$ is just the difference of limit of the sequence of integrals of simple functions (each one of which is just a finite sum of the product of the indicator function of a set and the measure of that set). The limit of a sequence of finite sums should by definition be $\sigma$-finite and so the difference is also $\sigma$-finite. $\square$
+If only $\int X$ exists, then we cannot say something like the previous part. Consider the case when there is $c_0$ such that $\{X > c_0\}$ with $\mu = \infty$. The negative part could still be finite. Notice that if $X$ is integrable, then sets like $\{X > c_0\}$ cannot have infinite $\mu$.  $\square$
 
 ------
 
@@ -959,19 +959,19 @@ Let $\varphi$ be the indefinite integral of $X$. Express $\varphi^{+}, \varphi^{
 
 **Solution**
 $$
-\varphi(\cdot) = \int_{\cdot} X d\varphi
+\varphi(\cdot) = \int_{\cdot} X d\mu
 $$
 Based on the definition of $\varphi^+$, we know that for $A, B \in \mathfrak a$
 $$
-\varphi^+(A) = \sup_{B\subset A} \varphi(B) = \sup_{B\subset A} \int_{B} X d\varphi = \int_A X^+ d\varphi
+\varphi^+(A) = \sup_{B\subset A} \varphi(B) = \sup_{B\subset A} \int_{B} X d\mu = \int_A X^+ d\mu
 $$
 Similarly, we know that 
 $$
-\varphi^-(\cdot) = \int_{\cdot} X^- d\varphi
+\varphi^-(\cdot) = \int_{\cdot} X^- d\mu
 $$
 And so 
 $$
-\bar\varphi(\cdot) = \int_{\cdot} (X^+ + X^-) d\varphi = \int_{\cdot} |X| d\varphi.
+\bar\varphi(\cdot) = \int_{\cdot} (X^+ + X^-) d\varphi = \int_{\cdot} |X| d\mu.
 $$
 $\square$
 
@@ -1052,19 +1052,19 @@ Then it is equivalent to show that
 $$
 \int_{\Omega} (X - X_n)^+ + \int (X - X_n)^- \to 0.
 $$
-Because $(X - X_n)^+ \le |X - X_n|$, by the definition of convergence in measure, $X_n \xrightarrow{\mu} X$ implies $(X_n - X)^+ \xrightarrow{\mu} 0$. Since $0 \le (X - X_n)^+ \le X$ integrable, by the dominated convergence theorem, 
+Because $(X - X_n)^+ \le |X - X_n|$, by the definition of convergence in measure, $X_n \xrightarrow{\mu} X$ implies $(X_n - X)^+ \xrightarrow{\mu} 0$. Since $0 \le (X - X_n)^+ \le |X|$ integrable, by the dominated convergence theorem, 
 $$
-\int_{\Omega} |X - X_n^+| = \int_{\Omega} (X - X_n)^+ \to 0
+\int_{\Omega} |(X - X_n)^+| = \int_{\Omega} (X - X_n)^+ \to 0
 $$
-For the same reason, 
+On the other hand, we know from the given condition that
 $$
-\int_{\Omega} (X - X_n)^- \to 0
+\int_{\Omega} (X - X_n) \to 0
 $$
 As a result, 
 $$
-\int_{\Omega} |X_n - X| \to 0,
+\int_{\Omega} (X_n - X)^ - = \int_{\Omega} (X - X_n)^+ - \int_{\Omega} (X - X_n) \to 0 \implies \int_{\Omega} |X_n - X| \to 0,
 $$
-and so by exercise 16, we know that $\int_A X_n \rightarrow$ $\int_A X$ uniformly in $A$. Changing $\mu$ to $a.e.$ will not affect our application of dominated convergence theorem here so the conclusion still holds. $\square$
+and so by exercise 16, we know that $\int_A X_n \rightarrow$ $\int_A X$ uniformly in $A$. Changing $\mu$ to $\text{a.e.}$ will not affect our application of dominated convergence theorem here so the conclusion still holds. $\square$
 
 ------
 
@@ -1076,6 +1076,17 @@ Rewrite in terms of integrals as many as possible of the complements and details
 
 ***RADON-NIKODYM THEOREM** If, on $\mathfrak a$, the measure $\mu$ and the $\sigma$-additive set function $\varphi$ are $\sigma$-finite and $\varphi$ is $\mu$-continuous, then $\varphi$ is the indefinite integral of a finite function determined up to an equivalence.*
 
+***An interesting fact.***
+
+*If a random variable $Y > 0$ is integrable, then for $n \in \mathbb Z_+$*,  
+$$
+\int_{\{Y > n\}} Y  \to 0 \text{ as } n\to \infty.
+$$
+*This is because we can construct a sequence $Y_n = Y\mathbf{1}\{Y \le n\}$, then we know that $0\le Y_n \uparrow Y$. By monotone convergence theorem, we know that* 
+$$
+\int Y_n \to \int Y \implies \int_{Y >n} Y = \int Y - \int Y_n \to 0.
+$$
+
 ### Exercise 19 (Discussion)
 
 If the $X_n$ are integrable and $\lim \int_A X_n$ exists and is finite for every $A$, then the $\int\left|X_n\right|$ are uniformly bounded, $\int_A\left|X_n\right| \rightarrow 0$ uniformly in $n$ as $\mu A \rightarrow 0$ and as $A \downarrow \emptyset$, and there exists an integrable $X$, determined up to an equivalence, such that $\int_A X_n \rightarrow \int_A X$ for every $A$. (Use 18.)
@@ -1084,13 +1095,53 @@ If the $X_n$ are integrable and $\lim \int_A X_n$ exists and is finite for every
 
 Is it about uniformly integrability?
 
-Using the conclusion of 14, we can define $\varphi_n(A) = \int_A X_n$. With the condition $\mu A \to 0$ and $A \downarrow \empty$,  we have that $\varphi_n \to 0$. Conditioned on $A\downarrow 0$, $\varphi_n A \to 0$ as $\mu A \to 0$. Otherwise, we could have $\varphi_n$ has the same property as Dirac measure while $\mu$ be a lebesgue measure, i.e, $\varphi_n$ has some postive value over a set consisting of a single point? Then, with the same logic for exercise 18 of chapter 1, we know that $\varphi_n A \to 0$ uniformly as $\mu A \to 0$ and $A \downarrow \emptyset$  and $\varphi = \lim \varphi_n$ is $\mu$-continuous and $\sigma$-additive.
+Using the conclusion of 14, we can define $\varphi_n(A) = \int_A X_n$. With the condition $\mu A \to 0$ and $A \downarrow \empty$,  we have that $\varphi_n \to 0$. Conditioned on $A\downarrow 0$, $\varphi_n A \to 0$ as $\mu A \to 0$.  Then, with the same logic for exercise 18 of chapter 1, we know that $\varphi_n A \to 0$ uniformly as $\mu A \to 0$ and $A \downarrow \emptyset$  and $\varphi = \lim \varphi_n$ is $\mu$-continuous and $\sigma$-additive.
+
+The question here is why we need $A\downarrow\emptyset$. Maybe because we try to avoid things like Dirac function? But in the next question, it seems that this condition could be suppressed when $\mu$ is finite. 
 
 The fact that $\varphi_n A \to 0$ uniformly as $\mu A \to 0$ and $A \downarrow \emptyset$, plus the conclusion in exercise 15 implies that $\int_A\left|X_n\right| \rightarrow 0$ uniformly in $n$ as $\mu A \rightarrow 0$ and as $A \downarrow \emptyset$ (since $\varphi_n$'s are all finite, then by exercise 9 of chapter 1 it is true).  The $\mu$-continuity and the $\sigma$-additivity of $\varphi$, along with the Radon-Nikodym theorem tells us that $\varphi$ is an indefinite integral of some $X$ up to an equivalence and 
 $$
 \varphi_n \to \varphi \implies \text{ for every A, } \int_A X_n \to \int_A X.
 $$
 The only thing that remains to prove is that $\int |X_n|$ are uniformly bounded. 
+
+We can show that based on the given condition, $X_n \xrightarrow{\text{a.e.}} X$.  If not, then we know that 
+$$
+\mu[X_n \not\to X] \ne 0
+$$
+Therefore, we know that there is a set, say, $A_0$ with $\mu A_0 = \delta_0 > 0$ such that $X_n \not\to X$ on $A_0$. This means that there exists some $\epsilon_0 > 0$, and for any $N_0 > 0$ there exists some $n > N_0$ such that on $A_0$
+$$
+|X_n - X| \ge \epsilon_0
+$$
+If it is possible, then we could then find a infinite subsequence $X_{nj}, j = 1, 2, \dots$ such that $|X_{nj} - X| \ge \epsilon_0$ on $A_0$ but $\int_{B} X_{nj} \to \int_{B} X$ for all $B \subset A_0$. We need to argue then it is impossible.  
+
+Consider the subsequence of $X_{nj}$, say $X_{njk}$ where we have $\mu[X_{njk} - X \ge \epsilon_0] \ge \frac{\delta}{2}$. Without loss of generality, assume this subsubsequence is infinite. Notice that we still have $\int_{B} X_{njk} \to \int_B X$ for all $B\subset A_0$. There must exists some $B_{0}\subset A_0$ with $\mu B_0 \ge \frac{\delta}{2}$ such that on $B_0$, there are infinitely many $X_{njk}$'s such that $X_{njk} - X \ge \epsilon_0$. Otherwise, there would exists a $B_1 \subset A_1$ such that there exists $K_1$ such that when $k > K_1$, $X_{njk} - X < \epsilon_0$ on $B_1$. But this means that for all $k > K_1$, $X_{njk} - X > \epsilon_0$ could only be true on $A_0 - B_1$ where $\mu(A_0 - B_1) < \frac{\delta}{2}$, which is contradictory.
+
+Now we obtain a $B_0$ with $\mu B_0 \ge \frac{\delta}{2}$ and there are infinitely many $X_{njk}$ such that $X_{njk} - X \ge \epsilon_0$ on $B_0$. This means that for any $K_2 > 0$, there exists some $k > K_2$ such that,
+$$
+\int_{B_0} (X_{njk} - X) d\mu \ge \frac{\delta\epsilon_0}{2}.
+$$
+However, the given condition tells us that for $\frac{\delta\epsilon_0}{2} > 0$, there exists an $K$ such that when $k > K$, 
+$$
+\int_{B_0} (X_n - X) d\mu < \frac{\delta \epsilon_0}{2}.
+$$
+We have found a contradiction. This means that we cannot have subsubsequence to be infinite. Then the subsubsequence for $\mu[X_{njk} - X < -\epsilon_0] \ge \frac{\delta}{2}$ cannot be infinite for the same reason. Then the subsequence of $X_{nj}$ cannot be infinite. And so the whole assumption that $X_n \not\to X$ on $A_0$ is invalid. In summary, we must have 
+$$
+X_n \xrightarrow{\text{a.e.}} X.
+$$
+And so $0\le X_n^\pm \xrightarrow{\text{a.e.}} X^\pm$.  With a similar argument in exercise 17, we could use dominated convergence theorem to control $(X^\pm - X_n^\pm)^+$ and $(X^\pm - X_n^\pm)$ by $|X^\pm|$ integrable to get
+$$
+I_n := \int_{\Omega} |X_n - X| \le \int_{\Omega} |X^+ - X_n^+| + \int_\Omega |X^- -  X_n^-| \to 0.
+$$
+which means that there exists some $N_1$ such that when $n > N_1$,
+$$
+I_n < \int |X|
+$$
+Denote $M = \max\{I_1, I_2, \dots, I_{N_1}, \int |X|\}$. Then
+$$
+\int |X_n| \le \int |X_n - X| + \int |X| \le 2M,
+$$
+which means that $\int |X_n|$ uniformly bounded. $\square$
 
 ### Exercise 20 (Discussion)
 
@@ -1108,21 +1159,34 @@ $$
 
 **Solution**
 
-If $X_n \to X$, then there for some fixed $\epsilon > 0$, $\omega\in \Omega$, there exists $N_{\epsilon, \omega} > 0$ such that when $n > N_{\epsilon, \omega}$,  $|X_n(\omega) - X(\omega)| < \epsilon$. Therefore taking 
-$$
-Y(\omega) = \max\{|X_1(\omega)|, \dots, |X_{N_{\epsilon, \omega}}(\omega)|, |X(\omega)|+\epsilon\}
-$$
-we will have that $|X_n| \le Y$ for all $n$ (and all $\omega$). Since $X$ and $X_n$'s are integrable, $Y$ is also integrable. Then by dominated convergence theorem, $\int_A X_n \rightarrow \int_A X$ uniformly in $A$. By exercise 19, $\int_A X_n \rightarrow 0$ uniformly in $n$ as $\mu A \rightarrow 0$ and as $A \downarrow \emptyset$.
+This seems to be a continuation of the discussion of uniform integrability.
 
-For the last statement, if $\mu$ is finite, then without loss of generality, we can assume $\mu A \le 1$. By the hint, for any $\epsilon > 0$,
-$$
-\begin{aligned}
-\int_A |X_n| 
-& \le \int_A |X_n - X| + \int_A |X| \\
-& \le \epsilon  + \int_{A\cap\{|X_n - X|\ge \epsilon\}} (|X_n| + |X|) + \int_A |X| \\
-\end{aligned}
-$$
-Since $\mu$ is finite, by comparison of convergence theorem, we know that $X_n \to X$ implies $X_n \xrightarrow{\mu} X$. 
+
 
 ------
 
+### Exercise 21
+
+The differential formalism applies to Radon-Nikodym derivatives:
+Let $\mu, \nu$ be finite measures on $\mathfrak a$ and $\varphi, \varphi^{\prime}$ be $\sigma$-finite signed measures on $\mathfrak a$. Let $\varphi$ be $\nu$-continuous and $\nu, \varphi, \varphi^{\prime}$ be $\mu$-continuous. Then
+$$
+\begin{gathered}
+\frac{d\left(\varphi+\varphi^{\prime}\right)}{d \mu}=\frac{d \varphi}{d \mu}+\frac{d \varphi^{\prime}}{d \mu} \quad \mu \text {-a.e. } \\
+\frac{d \varphi}{d \mu}=\frac{d \varphi}{d \nu} \frac{d \nu}{d \mu} \quad \mu \text {-a.e. }
+\end{gathered}
+$$
+(For the second assertion, it suffices to consider $\varphi \geqq 0, X=\frac{d \varphi}{d \nu} \geqq 0$ $Y=\frac{d \nu}{d \mu} \geqq 0$. Take simple $X_n$ with $0 \leqq X_n \uparrow X$ so that
+$$
+\int_A X d \nu \leftarrow \int_A X_n d \nu=\int_A X_n Y d \mu \rightarrow \int_A X Y d \mu 
+$$
+)
+
+**Solution**
+
+https://math.stackexchange.com/questions/4384565/additivity-of-radon-nikodym-derivatives-of-signed-measures
+
+For the first statement, for any set $A$,
+$$
+\int_A\frac{d(\varphi+\varphi^\prime)}{d\mu} d\mu = \varphi + \varphi^\prime = \int_A \frac{d\varphi}{d\mu} d\mu + \int_A \frac{d\varphi^\prime}{d\mu} d\mu = \int_A \frac{d\varphi}{d\mu} + \frac{d\varphi^\prime}{d\mu} d\mu
+$$
+The last equality comes from the additivity property stated on page 124. Therefore, $\frac{d\left(\varphi+\varphi^{\prime}\right)}{d \mu}=\frac{d \varphi}{d \mu}+\frac{d \varphi^{\prime}}{d \mu} \quad \mu \text {-a.e. }$
