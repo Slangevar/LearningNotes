@@ -1105,43 +1105,7 @@ $$
 $$
 The only thing that remains to prove is that $\int |X_n|$ are uniformly bounded. 
 
-We can show that based on the given condition, $X_n \xrightarrow{\text{a.e.}} X$.  If not, then we know that 
-$$
-\mu[X_n \not\to X] \ne 0
-$$
-Therefore, we know that there is a set, say, $A_0$ with $\mu A_0 = \delta_0 > 0$ such that $X_n \not\to X$ on $A_0$. This means that there exists some $\epsilon_0 > 0$, and for any $N_0 > 0$ there exists some $n > N_0$ such that on $A_0$
-$$
-|X_n - X| \ge \epsilon_0
-$$
-If it is possible, then we could then find a infinite subsequence $X_{nj}, j = 1, 2, \dots$ such that $|X_{nj} - X| \ge \epsilon_0$ on $A_0$ but $\int_{B} X_{nj} \to \int_{B} X$ for all $B \subset A_0$. We need to argue then it is impossible.  
 
-Consider the subsequence of $X_{nj}$, say $X_{njk}$ where we have $\mu[X_{njk} - X \ge \epsilon_0] \ge \frac{\delta}{2}$. Without loss of generality, assume this subsubsequence is infinite. Notice that we still have $\int_{B} X_{njk} \to \int_B X$ for all $B\subset A_0$. There must exists some $B_{0}\subset A_0$ with $\mu B_0 \ge \frac{\delta}{2}$ such that on $B_0$, there are infinitely many $X_{njk}$'s such that $X_{njk} - X \ge \epsilon_0$. Otherwise, there would exists a $B_1 \subset A_1$ such that there exists $K_1$ such that when $k > K_1$, $X_{njk} - X < \epsilon_0$ on $B_1$. But this means that for all $k > K_1$, $X_{njk} - X > \epsilon_0$ could only be true on $A_0 - B_1$ where $\mu(A_0 - B_1) < \frac{\delta}{2}$, which is contradictory.
-
-Now we obtain a $B_0$ with $\mu B_0 \ge \frac{\delta}{2}$ and there are infinitely many $X_{njk}$ such that $X_{njk} - X \ge \epsilon_0$ on $B_0$. This means that for any $K_2 > 0$, there exists some $k > K_2$ such that,
-$$
-\int_{B_0} (X_{njk} - X) d\mu \ge \frac{\delta\epsilon_0}{2}.
-$$
-However, the given condition tells us that for $\frac{\delta\epsilon_0}{2} > 0$, there exists an $K$ such that when $k > K$, 
-$$
-\int_{B_0} (X_n - X) d\mu < \frac{\delta \epsilon_0}{2}.
-$$
-We have found a contradiction. This means that we cannot have subsubsequence to be infinite. Then the subsubsequence for $\mu[X_{njk} - X < -\epsilon_0] \ge \frac{\delta}{2}$ cannot be infinite for the same reason. Then the subsequence of $X_{nj}$ cannot be infinite. And so the whole assumption that $X_n \not\to X$ on $A_0$ is invalid. In summary, we must have 
-$$
-X_n \xrightarrow{\text{a.e.}} X.
-$$
-And so $0\le X_n^\pm \xrightarrow{\text{a.e.}} X^\pm$.  With a similar argument in exercise 17, we could use dominated convergence theorem to control $(X^\pm - X_n^\pm)^+$ and $(X^\pm - X_n^\pm)$ by $|X^\pm|$ integrable to get
-$$
-I_n := \int_{\Omega} |X_n - X| \le \int_{\Omega} |X^+ - X_n^+| + \int_\Omega |X^- -  X_n^-| \to 0.
-$$
-which means that there exists some $N_1$ such that when $n > N_1$,
-$$
-I_n < \int |X|
-$$
-Denote $M = \max\{I_1, I_2, \dots, I_{N_1}, \int |X|\}$. Then
-$$
-\int |X_n| \le \int |X_n - X| + \int |X| \le 2M,
-$$
-which means that $\int |X_n|$ uniformly bounded. $\square$
 
 ### Exercise 20 (Discussion)
 
@@ -1161,7 +1125,31 @@ $$
 
 This seems to be a continuation of the discussion of uniform integrability.
 
+Similarly to exercise 17. We will have that $X_n^+ \to X^+$ and $X_n^- \to X^-$ on $\Omega$. On the other hand, $0 \le (X^+ - X_n^+)^+ \le X^+$ integrable. By dominated convergence theorem, we know that
+$$
+\int (X^+ - X_n^+)^+ \to 0
+$$
+On the other hand, we know that 
+$$
+\int (X^+ - X_n^+) \to 0
+$$
+And so following the same logic in exercise 17,
+$$
+\int |X^+ - X_n^+| \to 0.
+$$
+Similarly, we will have 
+$$
+\int |X^- - X_n^-| \to 0.
+$$
+Therefore,
+$$
+\int_{\Omega} |X_n - X| \le \int_{\Omega} |X^+ - X_n^+| + \int_\Omega |X^- -  X_n^-| \to 0,
+$$
+which means that $\int_A X_n \rightarrow \int_A X$ uniformly in $A$.
 
+Without the condition that $\mu$ is finite, proposition (2) is proved in the exercise 19.
+
+But what happens when $\mu$ is finite?
 
 ------
 
@@ -1189,4 +1177,6 @@ For the first statement, for any set $A$,
 $$
 \int_A\frac{d(\varphi+\varphi^\prime)}{d\mu} d\mu = \varphi + \varphi^\prime = \int_A \frac{d\varphi}{d\mu} d\mu + \int_A \frac{d\varphi^\prime}{d\mu} d\mu = \int_A \frac{d\varphi}{d\mu} + \frac{d\varphi^\prime}{d\mu} d\mu
 $$
-The last equality comes from the additivity property stated on page 124. Therefore, $\frac{d\left(\varphi+\varphi^{\prime}\right)}{d \mu}=\frac{d \varphi}{d \mu}+\frac{d \varphi^{\prime}}{d \mu} \quad \mu \text {-a.e. }$
+The last equality comes from the additivity property stated on page 124. Therefore, $\frac{d\left(\varphi+\varphi^{\prime}\right)}{d \mu}=\frac{d \varphi}{d \mu}+\frac{d \varphi^{\prime}}{d \mu} \quad \mu \text {-a.e. }$. Otherwise, there will be a set with positive measure such that the left-hand side is greater than the right-hand side, which means that the equality will not hold for this particular set.
+
+ 

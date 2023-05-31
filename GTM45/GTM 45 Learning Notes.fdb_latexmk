@@ -1,10 +1,10 @@
 # Fdb version 3
-["xdvipdfmx"] 1685467762 "Exercise 19 Chapter 2.xdv" "Exercise 19 Chapter 2.pdf" "Exercise 19 Chapter 2" 1685525317
-  "Exercise 19 Chapter 2.xdv" 1685467762 39428 2bd6001dba8a86b17a1ec269a2a1c4ae "xelatex"
+["xdvipdfmx"] 0 "GTM 45 Learning Notes.xdv" "GTM 45 Learning Notes.pdf" "GTM 45 Learning Notes" 0
+  "GTM 45 Learning Notes.xdv" 1685526671 589988 fa16bc1d3e77394daaeb86e96973e644 "xelatex"
   (generated)
-  "Exercise 19 Chapter 2.pdf"
-["xelatex"] 1685467761 "/Users/slangevar/Documents/Lund/Notes/LearningNotes/GTM45/Chapter 2 Exercise 19/Exercise 19 Chapter 2.tex" "Exercise 19 Chapter 2.xdv" "Exercise 19 Chapter 2" 1685525317
-  "/Users/slangevar/Documents/Lund/Notes/LearningNotes/GTM45/Chapter 2 Exercise 19/Exercise 19 Chapter 2.tex" 1685467760 6477 146cfd39bfda1f13b23e2a8d8168af4b ""
+  "GTM 45 Learning Notes.pdf"
+["xelatex"] 1685526672 "/Users/slangevar/Documents/Lund/Notes/LearningNotes/GTM45/GTM 45 Learning Notes.tex" "GTM 45 Learning Notes.xdv" "GTM 45 Learning Notes" 1685526672
+  "/Users/slangevar/Documents/Lund/Notes/LearningNotes/GTM45/GTM 45 Learning Notes.tex" 1685360131 86620 4c2b33f4126cdc7d2478301a5ba285ec ""
   "/usr/local/texlive/2021/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
   "/usr/local/texlive/2021/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -96,9 +96,9 @@
   "/usr/local/texlive/2021/texmf-dist/web2c/texmf.cnf" 1616443989 39972 3d6bb4d9d719e93193fa020b58adf5d4 ""
   "/usr/local/texlive/2021/texmf-var/web2c/xetex/xelatex.fmt" 1642519287 5093936 08d8135dd6f0d105cf60e4bb4e7069ef ""
   "/usr/local/texlive/2021/texmf.cnf" 1616695596 577 4c1911a7228e554c6032256d3cf5567d ""
-  "Exercise 19 Chapter 2.aux" 1685467762 843 37161eb033e6bbf1d55a4c32ca3797f1 "xelatex"
-  "Exercise 19 Chapter 2.tex" 1685467760 6477 146cfd39bfda1f13b23e2a8d8168af4b ""
+  "GTM 45 Learning Notes.aux" 1685526672 8 a94a2480d3289e625eea47cd1b285758 "xelatex"
+  "GTM 45 Learning Notes.tex" 1685360131 86620 4c2b33f4126cdc7d2478301a5ba285ec ""
   (generated)
-  "Exercise 19 Chapter 2.aux"
-  "Exercise 19 Chapter 2.log"
-  "Exercise 19 Chapter 2.xdv"
+  "GTM 45 Learning Notes.xdv"
+  "GTM 45 Learning Notes.log"
+  "GTM 45 Learning Notes.aux"
