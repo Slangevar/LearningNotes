@@ -597,6 +597,8 @@ If finite $\varphi_n \rightarrow \varphi$ finite, then $\varphi$ is $\sigma$-add
 
 If $\left|\varphi_n\right| \le c_n$, set $\mu A=\sum \frac{1}{2^n c_n}\left|\varphi_n A\right|$ . Then $\varphi_n$'s are $\mu$-continuous, i.e. $\mu A = 0 \implies \varphi_n A = 0$. By exercise 18, $\varphi_n$ are uniformly $\mu$-continuous and $\lim \varphi_n=\varphi$ is $\mu$-continuous and $\sigma$-additive. $\square$
 
+------
+
 ## Chapter 2 Exercise
 
 **Notation.** Unless otherwise stated, the measure space $(\Omega,\mathfrak a, \mu)$ is fixed, the (measurable) sets $A, B, ...,$ with or without affixes, belong to $\mathfrak a$, and the functions $X, Y, \dots$ with or without affixes, are finite measurable functions.
@@ -1060,7 +1062,7 @@ On the other hand, we know from the given condition that
 $$
 \int_{\Omega} (X - X_n) \to 0
 $$
-As a result, 
+ As a result, 
 $$
 \int_{\Omega} (X_n - X)^ - = \int_{\Omega} (X - X_n)^+ - \int_{\Omega} (X - X_n) \to 0 \implies \int_{\Omega} |X_n - X| \to 0,
 $$
@@ -1087,7 +1089,7 @@ $$
 \int Y_n \to \int Y \implies \int_{Y >n} Y = \int Y - \int Y_n \to 0.
 $$
 
-### Exercise 19 (Discussion)
+### Exercise 19 (Discussion, Unfinished)
 
 If the $X_n$ are integrable and $\lim \int_A X_n$ exists and is finite for every $A$, then the $\int\left|X_n\right|$ are uniformly bounded, $\int_A\left|X_n\right| \rightarrow 0$ uniformly in $n$ as $\mu A \rightarrow 0$ and as $A \downarrow \emptyset$, and there exists an integrable $X$, determined up to an equivalence, such that $\int_A X_n \rightarrow \int_A X$ for every $A$. (Use 18.)
 
@@ -1105,9 +1107,11 @@ $$
 $$
 The only thing that remains to prove is that $\int |X_n|$ are uniformly bounded. 
 
+If $\mu\Omega$ is finite, then it is easier. Let $B_n = [|X_n| \ge a]$ for some $a >0$. Since each $X_n$ ( $|X_n|$) is integrable, we must have $\mu B_n \to 0$ as $a \to \infty$. Otherwise, the integral of $X_n$ will not even converge because the tail integral will never go to $0$.
 
+I think some condition is missing here.
 
-### Exercise 20 (Discussion)
+### Exercise 20 (Discussion, Unfinished)
 
 If integrable $X_n \rightarrow X$ integrable, then existence and finiteness of $\lim \int_A X_n$ for every $A$ are equivalent to the following properties:
 
@@ -1163,7 +1167,7 @@ $$
 \frac{d \varphi}{d \mu}=\frac{d \varphi}{d \nu} \frac{d \nu}{d \mu} \quad \mu \text {-a.e. }
 \end{gathered}
 $$
-(For the second assertion, it suffices to consider $\varphi \geqq 0, X=\frac{d \varphi}{d \nu} \geqq 0$ $Y=\frac{d \nu}{d \mu} \geqq 0$. Take simple $X_n$ with $0 \leqq X_n \uparrow X$ so that
+(For the second assertion, it suffices to consider $\varphi \geqq 0, X=\frac{d \varphi}{d \nu} \geqq 0$, $Y=\frac{d \nu}{d \mu} \geqq 0$. Take simple $X_n$ with $0 \leqq X_n \uparrow X$ so that
 $$
 \int_A X d \nu \leftarrow \int_A X_n d \nu=\int_A X_n Y d \mu \rightarrow \int_A X Y d \mu 
 $$
@@ -1173,10 +1177,362 @@ $$
 
 https://math.stackexchange.com/questions/4384565/additivity-of-radon-nikodym-derivatives-of-signed-measures
 
-For the first statement, for any set $A$,
+For the first assertion, for any set $A$,
 $$
 \int_A\frac{d(\varphi+\varphi^\prime)}{d\mu} d\mu = \varphi + \varphi^\prime = \int_A \frac{d\varphi}{d\mu} d\mu + \int_A \frac{d\varphi^\prime}{d\mu} d\mu = \int_A \frac{d\varphi}{d\mu} + \frac{d\varphi^\prime}{d\mu} d\mu
 $$
 The last equality comes from the additivity property stated on page 124. Therefore, $\frac{d\left(\varphi+\varphi^{\prime}\right)}{d \mu}=\frac{d \varphi}{d \mu}+\frac{d \varphi^{\prime}}{d \mu} \quad \mu \text {-a.e. }$. Otherwise, there will be a set with positive measure such that the left-hand side is greater than the right-hand side, which means that the equality will not hold for this particular set.
 
- 
+For the second assertion, first consider the case $X=\frac{d \varphi}{d \nu} \geqq 0$, $Y=\frac{d \nu}{d \mu} \geqq 0$. Then we take a simple $X_n$ with $0\le X_n \uparrow X$. By monotone convergence theorem, we know that for all $A$
+$$
+\int_A X_n d\nu \to \int_A X d\nu
+$$
+By the corollary of Radon-Nikodym theorem, we know that since $\nu$ is $\mu$-continuous and $X_n$ is measurable, for all $A$
+$$
+\int_A X_n d\nu = \int_A X_n \frac{d\nu}{d\mu} d\mu = \int_A X_nY d\mu
+$$
+Again, since $Y \ge 0$, we have that $X_n Y \le XY$ and again by monotone convergence theorem, for all $A$
+$$
+\int_A X_n Y d\mu \to \int_A XY d\mu.
+$$
+As a result, 
+$$
+\int_A \frac{d\varphi}{d\mu} d\mu = \varphi = \int_A X d\nu = \int_A XY d\mu \implies \frac{d \varphi}{d \mu}=\frac{d \varphi}{d \nu} \frac{d \nu}{d \mu} \quad \mu \text {-a.e. }
+$$
+We've only proved for the case when $X\ge0, Y\ge 0$ while we know that $X = X^+ - X^-$ and $Y = Y^+ - Y^-$. We want to show for all $A$, 
+$$
+\int_A (X^+ - X^-) d\nu = \int_A (X^+ - X^-)(Y^+ - Y^-) d\mu.
+$$
+Let 
+$$
+\nu_1(A) = \int_A Y^+ d\mu;\quad \nu_2(A) = \int_A Y^- d\mu,
+$$
+then with a similar argument, with the preceding propostion we could show that for all $A$
+$$
+\int_A X^+ d\nu_1 = \int_A X^+Y^+ d\mu, \int_A X^+ d\nu_2 = \int_A X^+Y^- d\mu \implies \int_A X^+ d\nu = \int_A X^+Y d\mu 
+$$
+Same applies to the case when we consider $X^-$. Therefore, for all $A$
+$$
+\int_A X d\nu = \int_A (X^+ - X^-) d\nu = \int_A XY d\mu \implies \frac{d \varphi}{d \mu}=\frac{d \varphi}{d \nu} \frac{d \nu}{d \mu} \quad \mu \text {-a.e. }
+$$
+$\square$
+
+------
+
+Let $\left\{\mu_t, t \in T\right\}$ and $\left\{\mu_{t^{\prime}}^{\prime}, t^{\prime} \in T^{\prime}\right\}$ be two families of measures on $\mathfrak a ;$ we drop $t \in T$ and $t^{\prime} \in T^{\prime}$ unless confusion is possible. We say that $\left\{\mu_t\right\}$ is $\left\{\mu_{t^{\prime}}^{\prime}\right\}$-continuous if every set null for all $\mu_{t^{\prime}} t^{\prime}$ is null for all $\mu_t$. If the converse is also true, we say that the two families are mutually continuous.
+
+### Exercise 22
+
+If $\left\{\mu_j\right\}$ is a countable family of finite measures, then there exists a finite measure $\mu$ such that $\left\{\mu_t\right\}$ and $\mu$ are mutually continuous. (Take $\mu=$ $\sum \mu_j / 2^j \mu_j \Omega$.)
+
+**Solution**
+
+According to the hint, take $\mu=$ $\sum \mu_j / 2^j \mu_j \Omega$. Then $\mu = 0$ if all $\mu_j$'s are zero for obvious reasons. This means that $\mu$ is $\{\mu_t\}-$ continuous. On the other hand, $\mu$ being zero means that all $\mu_j$'s have to be zero so that $\{\mu_t\}$ is $\mu-$continous. Therefore we have mutual continuity. $\square$
+
+------
+
+### Exercise 23 (Unfinished)
+
+Let the $\mu_t$ and $\mu$ be finite measures. If $\left\{\mu_t\right\}$ is $\mu$-continuous, then there exists a finite measure $\mu^{\prime}$ such that $\left\{\mu_t\right\}$ and $\mu^{\prime}$ are mutually continuous. (Select sets $A_t=\left[\frac{d \mu_t}{d \mu}>0\right]$. Denote by $B$, with or without affixes, sets such that, for some $t, B \subset A_t$ and $\mu_t B>0$. Denote countable sums of sets $B$ up to $\mu$-null sets by $C$, with or without affixes. Every subset $C^{\prime} \subset C$ with $\mu_t C^{\prime}>0$ is a set $C$; every countable union of sets $C$ is a set $C$. Let $\mu C_n \rightarrow s$ where $s$ is the supremum of values of $\mu$ over all the sets $C$. Then $s=\mu \bigcup C_n=\mu \bigcup B_m$ and to every $m$ there corresponds a $\mu_t$, say $\mu_m$, such that $B_m \subset A_m$ and $\mu_m B_m>0$. The families $\left\{\mu_t\right\}$ and $\left\{\mu_m\right\}$ are mutually continuous.) 
+
+**Solution**
+
+The difference for this question and the previous one is that this time $\{\mu_t\}$ are not required to be countable. But I don't know what the hint is talking about.
+
+------
+
+### Exercise 24 (Unfinished)
+
+Let $\bar{\mu}_n=\sum_{k=1}^n \mu_k \rightarrow \bar{\mu}$ and $\bar{\nu}_n=\sum_{k=1}^n \nu_k \rightarrow \bar{\nu}$, all the $\mu$ and $\nu$ with various affixes being finite measures on $\mathfrak a$ and every $\bar{\nu}_n$ being $\bar{\mu}_n$-continuous.
+	(i) $\frac{d \mu_1}{d \bar{\mu}_n} \rightarrow \frac{d \mu_1}{d \bar{\mu}} \mu$-a.e.
+	(ii) if $\left\{\mu_n\right\}$ is $\nu$-continuous, then $\frac{d \bar{\mu}_n}{d \nu} \rightarrow \frac{d \bar{\mu}}{d \nu} \nu$-a.e.
+	(iii) $\bar{\nu}$ is $\bar{\mu}$-continuous and $\frac{d \bar{\nu}_n}{d \bar{\mu}_n} \rightarrow \frac{d \bar{\nu}}{d \bar{\mu}} \bar{\mu}$-a.e.
+(For the last assertion, if $\bar{\mu}_n A_n=0$ for all $n$, then $\bar{\mu}\left(\lim \sup A_n\right.$ ) $=0$. It follows that it suffices to consider a particular choice of the $\frac{d \bar{\nu}_n}{d \bar{\mu}_n}=\sum_{k=1}^n X_k / \sum_{k=1}^n Y_k$ where $X_k=\frac{d \nu_k}{d \bar{\mu}}, Y_k=\frac{d \mu_k}{d \bar{\mu}}$. But $\sum X_n=\frac{d \bar{\nu}}{d \bar{\mu}}$ and $\sum Y_n=1 \bar{\mu}$-a.e.)
+
+**Solution**
+
+For the first assertion, since $\mu_n$'s are measures, it is true that $\mu_1$ is $\bar \mu_n$-continous. We also have $\bar \mu_n$ is $\bar \mu$-continuous. From exercise 21 we know that 
+$$
+\frac{d\mu_1}{d\bar\mu} = \frac{d\mu_1}{d\bar\mu_n} \frac{d\bar\mu_n}{d\bar\mu}, \mu\text{-a.e.}
+$$
+We may argue that $\frac{d\bar\mu_n}{d\bar\mu} \ge 0$, $\mu$-a.e. If not, then there exists a set $A$ with positive measure such that on $A$, $\frac{d\bar\mu_n}{d\bar\mu} < 0$, then
+$$
+0 < \bar\mu_n(A) = \int_A d\bar\mu_n = \int_A \frac{d\bar\mu_n}{d\bar\mu} d\bar\mu < 0.
+$$
+Clearly, it is contradictory.
+
+For the second assertion, suppose we've proved the first one, then $ \frac{d\bar\mu_n}{d\bar\mu} \to 1, \mu\text{-a.e.}$ Since $\mu_n$ is $\nu$-continuous, we know that $\bar\mu$ is also $\nu$-continuous. By the relationship,
+$$
+\frac{d\bar\mu_n}{d\nu} = \frac{d\bar\mu_n}{d\bar\mu} \frac{d\bar\mu}{d\nu}, \nu\text{-a.e.}
+$$
+If $\nu$ is $\mu$-continuous, we know that $\mu$-a.e. implies $\nu$-a.e. then we are done.
+
+------
+
+***The propositions which follow correspond to various definitions of the concept of integration. We shall assume that the measures and the functions are finite. Besides proving the statements, the reader should also examine removal of the restriction of finiteness as well as of other restrictions which may be introduced.***
+
+### Exercise 25 (Undone)
+
+Set
+$$
+\begin{gathered}
+\int X d \varphi=\int X d \varphi^{+}-\int X d \varphi^{-}, \int(X+i Y) d \mu=\int X d \mu+i \int Y d \mu \\
+\int X d(\mu+i \nu)=\int X d \mu+i \int X d \nu
+\end{gathered}
+$$
+and investigate existence and properties of integrals so defined.
+
+------
+
+*A set function $\varphi$ on $\mathfrak a$ is the indefinite integral on a $\sigma$-finite measure space of a finite function $X$ determined up to an equivalence, if, and only if, $\varphi$ is $\sigma$-finite, $\sigma$-additive, and $\mu$-continuous; and $X$ is integrable if, and only if, this $\varphi$ is finite.*
+
+*The indefinite integral of a measurable function $X$ which is not necessarily finite is still $\sigma$-additive and $\mu$-continuous, but it is not necessarily $\sigma$-finite. The question arises whether the Radon-Nikodym theorem can be extended to this case. The answer is in the affirmative. The Radon-Nikodym theorem remains valid if finiteness of $X$ and $\sigma$-finiteness of $\varphi$ are simultaneously suppressed therein.*
+
+### Exercise 26
+
+**Descriptive approach.** The Radon-Nikodym theorem characterizes an indefinite integral but not that of a given function. The following proposition answers this requirement.
+$\varphi$ on $\mathfrak a$ is indefinite integral of $X$ on $\Omega$ if, and only if, $\varphi$ is $\sigma$-additive and, for every set $A=[a \leqq X \leqq b] B, B \in \mathfrak a$,
+$$
+a \mu A \leqq \varphi(A) \leqq b \mu A
+$$
+**Solution**
+
+The $\sigma$-additivity immediately comes from the characterization of the indefinite integral. We need to show for the inequalites. 
+
+Obviously, if the inequalities are satisfied, then $\varphi$ is $\mu$-continuous since when $\mu$ is 0, both both sides of the inequality will be 0. Hence, $\varphi$ will be the indefinite integral of some function $X^\prime$. We need to show that $X^\prime = X$ up to an equivalence. If not, then there exists some $n\in \mathbb Z_+$ and a set positive measure set $\mu(A^\prime) > 0$ that $X^\prime - X > \frac{1}{n}$. Since $X$ is finite, we could express $A^\prime$ as 
+$$
+A^\prime = [a^\prime \le X \le b^\prime] B^\prime,
+$$
+and there exists some $M \in \mathbb Z_+$ such that $M > 2n(b^\prime - a^\prime)$. Then there must exists a $c \in [a^\prime, b^\prime]$ such that the set
+$$
+A_c = \left[c \le X \le c+\frac{b^\prime - a^\prime}{M}\right]B^\prime
+$$
+has strictly positive measure. Otherwise, 
+$$
+A^\prime = \sum_{c = a^\prime}^{b - \frac{b^\prime - a^\prime}{M}} A_c
+$$
+will also have measure zero by the finite additivity of measure $\mu$. 
+
+Now we know there is such an $A_{c}$ with positive measure, name it $A_{c_0}$. Suppose $\mu A_{c_0} = \delta_0 > 0$, then 
+$$
+\varphi(A_{c_0}) \ge \int_{A_{c_0}} X + \frac{1}{n} d\mu \ge \left(c + \frac{1}{n}\right)\delta_0 > \left(c+\frac{b^\prime - a^\prime}{M}\right)\delta_0 = \left(c+\frac{b^\prime - a^\prime}{M}\right)\mu A_{c_0}
+$$
+Clearly, this is contradictory to the inequalties. Therefore, we must have $X^\prime = X$ and so $\varphi$ is indeed the indefinite integral of $X$.
+
+On the other hand, if $\varphi$ is the indefinite integral of $X$, then it is very obvious the inequality is true. Otherwise we will have ridiculous results on some set $A$, $X \ge a$ but
+$$
+\varphi = \int_A (X - a) d\mu < 0.
+$$
+$\square$
+
+------
+
+### Exercise 27 (Undone)
+
+In the definition of the integral given in the text, start with (nonnegative) elementary functions instead of simple ones. The integral so defined coincides with the initial one.
+
+------
+
+### Exercise 28
+
+**Lebesgue's approach.** The Cauchy-Riemann approach starts with arbitrary finite partitions of the interval of integration into intervals. The Lebesgue approach consists in partitioning the set of integration according to the function to be integrated so that the integral is tailored to order as opposed to the ready-to-wear Cauchy-Riemann one. Let $\mu<\infty$.
+Set
+$$
+\sum_n(X)=\sum_{k=-\infty}^{+\infty} \frac{k-1}{2^n} \mu\left[\frac{k-1}{2^n} \leqq X<\frac{k}{2^n}\right] .
+$$
+If $X$ is bounded, these sums correspond to finite partitions and $\int X= \lim \sum_n(X)$. If $X$ is not bounded, set $X_{m n}=X$ if $-m \leqq X \leqq n$ and $X_{m n}=0$ otherwise. If $X$ is integrable, then $\int X_{m n} \rightarrow \int X$ as $m, n \rightarrow \infty$.
+
+If $X$ is not bounded, the series $\sum_n(X)$ correspond to countable partitions and $\int X=\lim \sum_n(X)$, in the sense that if $X$ is integrable, then these series are absolutely convergent and the equality holds and, conversely, if one of these series is absolutely convergent, so are all of them and the equality holds.
+(For the last assertion, it suffices to consider nonnegative elementary functions $X_n=\sum_1^{\infty} \frac{k-1}{2^n} I_{\left[\frac{k-1}{2^n} \leqq X<\frac{k}{2^n}\right]}$. For the converse, use the relation $\left.X \leqq 2 X_n+\mu \Omega.\right)$
+
+**Solution**
+
+I am not sure what we should prove here. I will start from the assertion regarding $X$ being unbounded. We may define $Y_{m} = X_{mn}^-$ and $Z_n = X_{mn}^+$ then $0 \le Y_m, Z_n$ and $Y_m \to X^-, Z_n \uparrow X^+$. Also we know that 
+$$
+\int X_{mn} = -\int Y_m + \int Z_n
+$$
+ By monotone convergence theorem, we know that since $X^+, X^-$ are both integrable from the integrability of $X$, 
+$$
+\quad \int Z_n \to \int X^+.
+$$
+On the other hand, we know that for sure
+$$
+Y_m \le X^- + \frac{1}{2^n}\mu[X \le 0] \le  X^- + \mu\Omega
+$$
+Integrable. By dominated convergence theorem, we also have that 
+$$
+\int Y_m \to \int X^-,
+$$
+
+
+and therefore, 
+$$
+\int X_{mn} \to \int X^+ - \int X^- = \int X.
+$$
+Now we proceed to the last paragraph. The first assertion is just an acronym of what we proved just now. For the last assertion, if $X$ integrable, so is $X^+$. The elementary functions $X_n=\sum_1^{\infty} \frac{k-1}{2^n} I_{\left[\frac{k-1}{2^n} \leqq X<\frac{k}{2^n}\right]}$ satisfies $X_n \uparrow X^+$ and so by monotone convergent theorem, 
+$$
+\int X_n = \sum_{k=1}^{+\infty} \frac{k-1}{2^n} \mu\left[\frac{k-1}{2^n} \leqq X<\frac{k}{2^n}\right] \uparrow \int X^+
+$$
+Since $0 \le X_n\uparrow$ , we know that $\sup \int X_n \le \int X^+ < \infty$, which means that each series $X_n$  is convergent and so also absolutely convergent. Same applies if we define $W_n$ as $W_n=\sum_{-\infty}^{0} \frac{k}{2^n} I_{\left[\frac{k-1}{2^n} \leqq X<\frac{k}{2^n}\right]}$. With a simialr argument, we know that $\int Y_m$ is also convergent and absolute convergent. Therefore, the series 
+$$
+\sum_{n}(X) = \int X_n - \int Y_m \le \int X_n + Y_m
+$$
+is also absolute convergent. 
+
+Now we need to show for the converse. For $X_n$, we need to argue that if there exists some $n_0$ such that $\int  X_{n_0}$ is absolute convergent, then all $\int X_n$'s are absolute convergent. It is suffient to show that if $\int X_{n_0}$ is (absolute) convergent then $X^+$ is integrable. We know that 
+$$
+\int X^+ \le \int X_1 + \frac{1}{2}\mu[x \ge 0] \le \int X_{n_0} + \mu \Omega < \infty
+$$
+Therefore, $X^+$ is integrable. Same applies to $X^-$. Therefore, $X$ is integrable and all the series are absolute convergent.
+
+------
+
+### Exercise 29
+
+**Darboux-Young approach.** Let $X$ be measurable or not and set
+$$
+\underset{\overline{}}\int X=\sup \sum_{k=1}^n \inf _{\omega \in A_k} X(\omega) \mu A_k, \quad \bar{\int} X=\inf \sum_{k=1}^n \sup _{\omega \in A_k} X(\omega) \mu A_k
+$$
+where the extrema of sums are taken over all finite measurable partitions $\sum_{k=1}^n A_k=\Omega$. If $X$ is measurable and bounded, then
+$$
+\int X=\underset{\overline{}}{\int} X=\bar{\int} X
+$$
+If $\underset{\overline{}}\int X$ and $\bar{\int} X$ exist and are equal, we say that $\int X$ exists and equals their common value.
+We can also set
+$$
+\underset{\overline{}}\int^{\prime} X=\sup \int Y, \bar{\int}^{\prime} X=\inf \int Z
+$$
+where the extrema are taken over all integrable (and measurable) $Y$ and $Z$ such that $Y \leqq X \leqq Z$ and define $\int X$ as above. Compare the two definitions.
+
+**Solution**
+
+We may only consider $\underset{\overline{}}\int X$ and $\underset{\overline{}}\int^\prime X$ first since the case would be very similar for  $\bar{\int}$ and  $\bar{\int}^{\prime}$ . First of all, we know that for all $n$,
+$$
+\sum_{k=1}^n \inf _{\omega \in A_k} X(\omega) \mu A_k \le \sup \int Y
+$$
+since $\inf _{\omega \in A_k} X(\omega) \mathbf 1\{A_k\}$ is measurable and integrable. Taking the supremum will not change the direction of the inequality. So $\underset{\overline{}}\int X \le \underset{\overline{}}\int^\prime X$. On the other hand, if $X$ is bounded, then we can assume that there exists some $M > 0$ such that $|X| \le \frac{M}{2}$. Then for any $\epsilon > 0$, as long as $n > \frac{M\mu(\Omega)}{\epsilon}$, we will have 
+$$
+\sup \sum_{k=1}^n\inf _{\omega \in A_k} X(\omega) \mu A_k + \epsilon = \sup \sum_{k=1}^n \inf _{\omega \in A_k} X(\omega) \mu A_k + M\mu(\Omega)\cdot \frac{\epsilon}{M\mu(\Omega)}   \ge \inf \sum_{k=1}^n \sup _{\omega \in A_k} X(\omega) \mu A_k \ge \sup \int Y
+$$
+Since $\epsilon$ could be arbitrarily small, we have that 
+$$
+\sup \sum_{k=1}^n\inf _{\omega \in A_k} X(\omega) \mu A_k \ge \sup \int Y \implies \underset{\overline{}}\int X \ge \underset{\overline{}}\int^\prime X \implies \underset{\overline{}}\int X = \underset{\overline{}}\int^\prime X. 
+$$
+Therefore, as long as $X$ is bounded, the two definitions are equivalent. $\square$
+
+------
+
+### Exercise 30
+
+**Completion approach. ** The Meray-Cantor method for completion of metric spaces adjoins to the given metric space elements which represent mutually convergent (in distance) sequences of its points. This method permits (Dunford) to define and study the integral of functions with values in an arbitrary Banach space (Bochner), as follows:
+
+​	(i) Define the indefinite integral of a simple function as in the text. Since nonnegativity and infinite values may be meaningless, all simple functions under consideration are integrable.
+​	(ii) Adjoin to the space of these integrable functions $X_m, X_n, \cdots$ all functions $X$ such that $\int\left|X_m-X_n\right| \rightarrow 0$ and $X_n \rightarrow X$, by defining the indefinite integral of $X$ as the limit of the indefinite integrals of the $X_n$. To justify this definition, prove for simple functions those elementary properties of integrals which continue to have content for an arbitrary Banach space: $\int\left|X_m-X_n\right| \rightarrow 0$ if, and only if, $X_n \stackrel{\mu}{\rightarrow} X$ where $X$ is some measurable function, and $\int_A\left|X_n\right| \rightarrow 0$ uniformly in $n$ as $\mu A \rightarrow 0 ; \int\left|X_m-X_n\right| \rightarrow 0$ implies that $\varphi_n \rightarrow \varphi$ where $\varphi$ is $\sigma$-additive.
+​	(iii) Extend the foregoing properties to all integrable functions and obtain the dominated convergence theorem.
+
+------
+
+## Chapter 3 Exercise 
+
+### Exercise 0.1
+
+Show that $\mathrm{P}\left(\lim \inf A_n\right) \leqq \lim \inf \mathrm{P} A_n \leqq \lim \sup \mathrm{P} A_n \leqq \mathrm{P}\left(\lim \sup A_n\right)$ as claimed on page 152. 
+
+**Solution**
+$$
+\lim \inf A_n = \bigcup_{n=1}^\infty \bigcap_{k = n}^\infty A_k  
+$$
+and we have that as long as $n_1 > n_2$, 
+$$
+\bigcap_{k = n_1}^\infty A_k \subset \bigcap_{k = n_2}^\infty A_k
+$$
+Therefore, 
+$$
+\bigcap_{k = n}^\infty A_k \uparrow \lim \inf A_n \implies \mathbb P(\lim\inf  A_n ) = \lim_{n\to \infty} \mathbb P\left(\bigcap_{k=n}^\infty A_n \right)
+$$
+On the other hand, for all $n$, we have 
+$$
+\bigcap_{k=n}^\infty A_n \subset A_n \implies \mathbb P\left(\bigcap_{k=n}^\infty A_n \right) \le \mathbb P(A_n) \implies \lim \inf \mathbb P\left(\bigcap_{k=n}^\infty A_n \right) \le \lim \inf \mathbb P(A_n)
+$$
+However, 
+$$
+\lim \inf \mathbb P\left(\bigcap_{k=n}^\infty A_n \right) = \lim \mathbb P\left(\bigcap_{k=n}^\infty A_n \right) \implies  \mathbb P(\lim\inf  A_n ) = \lim \mathbb P\left(\bigcap_{k=n}^\infty A_n \right)\le \lim \inf \mathbb P(A_n),
+$$
+For the last inequality, the techniques are very alike but we will consider a decreasing sequence.
+
+I think also we can directly apply the Fatou-Lebesgue theorem and let $X_n$ be the indicator function of the set.
+
+***Fatou-Lebesgue theorem.*** *Let $Y$ and $Z$ be integrable functions. If $Y \leqq X_n$ or $X_n \leqq Z$, then*
+$$
+\int \lim \inf X_n \leqq \lim \inf \int X_n, \text { resp. } \lim \sup \int X_n \leqq \int \lim \sup X_n
+$$
+
+------
+
+***9.3 d.** If $X_n \stackrel{r}{\rightarrow} X$, then $E\left|X_n\right|^r \rightarrow E|X|^r$.*
+
+***Corollary 2 on page 125** If $X$ is integrable, then $\int_A|X| \rightarrow 0$ as $\mu A \rightarrow 0$.*
+
+*For, if $X_n=X$ or $n$ according as $|X|<n$ or $|X| \geqq n$, then $\int\left|X_n\right| \uparrow$ $\int|X|$, so that, given $\epsilon>0$, there exists an $n_0$ such that $\int|X|<$ $\int\left|X_{n_0}\right|+\frac{\epsilon}{2}$. It follows that, for $A$ with $\mu A<\epsilon / 2 n_0$*
+$$
+\int_A|X|=\int_A\left|X_{n_0}\right|+\int_A\left(|X|-\left|X_{n_0}\right|\right)<\frac{\epsilon}{2}+\int|X|-\int\left|X_{n_0}\right|<\epsilon .
+$$
+
+### Exercise 0.2
+
+Prove the proposition f on page 164: If $X_n \stackrel{r}{\rightarrow} X$, then the $\left|X_n\right|^r$ are uniformly integrable.
+
+**Solution**
+
+If we could prove that $|X_n|^r$ are uniformly continuous and uniformly bounded then we are done. For the uniform boundedness, notice that 
+$$
+E\left|X_n\right|^r \rightarrow E|X|^r \implies \int_\Omega |X_n|^r \to \int_\Omega |X|^r.
+$$
+Therefore, there exists some $N_1$ such that when $n > N_1$, 
+$$
+\int_\Omega |X_n|^r < \int_\Omega |X|^r + 1.
+$$
+Let 
+$$
+M = \max\left\{\int |X_1|^r, \dots, \int |X_{N_1}|^r, 1 + \int |X|^r\right\}
+$$
+we will have that for all $n$,
+$$
+\int |X_n|^r < M,
+$$
+which means uniform boundedness.
+
+On the other hand, for any $\epsilon > 0$, we know from the corollary 2 on page 125 that there exists some $\delta_0$ such that when $P(A) < \delta_0$,
+$$
+\int_A |X|^r < \frac{\epsilon}{2}.
+$$
+If $r \leqq 1$ then it follows, by the $c_r$-inequality, that
+$$
+\left.|E| X_n\right|^r-E|X|^r|\leqq E| X_n-\left.X\right|^r 
+$$
+and, if $r>1$, then it follows, by the Minkowski inequality, that
+$$
+\left.\left|E^{\frac{1}{r}}\right| X_n\right|^r-E^{\frac{1}{r}}|X|^r\left|\leqq E^{\frac{1}{r}}\right| X_n-\left.X\right|^r.
+$$
+Which means that, given the value of $r$, there exists some $\eta$ such that when $E|X_n - X|^r < \eta$, $|E|X_n|^r - E|X|| < \frac{\epsilon}{2}$ (we can restrain this relationship on any $A$ as follow). 
+
+Since
+$$
+X_n \xrightarrow{r} X_ \implies \int_\Omega |X_n - X|^r \to 0 
+$$
+we have that there exists some $N_2$ such that when $n > N_2$, 
+$$
+0 \le \int_A |X_n - X|^r \le \int |X_n - X|^r < \eta \implies \int_A |X_n|^r - \int_A|X|^r < \frac{\epsilon}{2}
+$$
+For the remaining finite $X_1, \dots, X_{N_2}$, we can find the analog of $\delta_0$, denote then as $\delta_i, i= 1, \dots, N_2$, then take 
+$$
+\delta = \max\{\delta_1, \delta_2, \dots, \delta_{N_2}, \delta_0\}, 
+$$
+we will have that whenever $P(A) < \delta$, for any $n$,
+$$
+\int_A |X_n|^r < \epsilon,
+$$
+which means uniform continuity. $\square$
+
+
+
